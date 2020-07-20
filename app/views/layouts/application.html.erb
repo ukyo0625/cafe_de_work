@@ -10,13 +10,30 @@
   </head>
 
   <body>
-    <% if owner_signed_in? %>
-      <li class="nav-list-item"><%= link_to '投稿ページ', new_owners_shop_path %></li>
-      <li class="nav-list-item"><%= link_to 'ログアウト', destroy_owner_session_path, method: :delete %>
-    <% else %>
-    　<li class="nav-list-item"><%= link_to 'ログイン',new_owner_session_path %></li>
-    　<li class="nav-list-item"><%= link_to '会員登録', new_owner_registration_path %></li>
-    <% end %>
+    <header>
+      <div class="container" style="border-bottom: 1px solid black;" >
+        <nav class='nav navbar-nav navbar-left'>
+          <h3>ロゴ</h3>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if owner_signed_in? %>
+              <li class="nav-list-item"><%= link_to '投稿ページ', new_owners_shop_path %></li>
+              <li class="nav-list-item"><%= link_to '一覧', owners_shops_path %></li>
+              <li class="nav-list-item"><%= link_to '登録情報編集', edit_owner_path(current_owner.id) %></li>
+              <li class="nav-list-item"><%= link_to 'ログアウト', destroy_owner_session_path, method: :delete %>
+              <li class="nav-list-item"><%= link_to '退会', owners_confirm_path %></li>
+              </li>
+            <% else %>
+            　<li class="nav-list-item"><%= link_to 'TOPページ', root_path %></li>
+            　<li class="nav-list-item"><%= link_to '検索', shops_search_path %></li>
+            　<li class="nav-list-item"><%= link_to 'ログイン',new_owner_session_path %></li>
+            　<li class="nav-list-item"><%= link_to '会員登録', new_owner_registration_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <%= yield %>
   </body>

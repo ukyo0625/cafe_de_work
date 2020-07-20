@@ -1,0 +1,4 @@
+退会画面
+
+<%= link_to "退会しない" , owners_shops_path , class:"btn btn-primary" %>
+<%= link_to "退会する" , owners_leave_path ,method: :patch, class:"btn btn-danger", data: { confirm: '本当に退会しますか？' } %>

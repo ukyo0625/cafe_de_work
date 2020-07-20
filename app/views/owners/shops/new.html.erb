@@ -1,0 +1,29 @@
+new
+
+<%= form_for(@shop_new, url: owners_shops_path) do |t|  %>
+	    <%= t.label :ショップ名 %>
+	    <%= t.text_field :shop_name %>
+	    <%= t.label :ショップ詳細 %>
+	    <%= t.text_area :shop_detail %>
+	    <%= t.label :住所 %>
+	    <%= t.text_field :address %>
+	    <%= t.label :席数 %>
+	    <%= t.text_field :seat %>
+	    <%= t.label :営業時間 %>
+	    <%= t.label :開店時間 %>
+	    <%= t.text_field :open_time %>
+	    <%= t.label :閉店時間 %>
+	    <%= t.text_field :close_time %>
+	    <%= t.label :定休日 %>
+	    <% ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"].each_with_index do |holiday,i| %>
+          <div>
+            <%= t.check_box :holiday,{ multiple: true, checked: false },i, nil %>
+            <span><%= holiday %></span>
+          </div>
+        <% end %>
+	    <%= t.label :電話番号 %>
+	    <%= t.text_field :phone_number %>
+        <%= t.label :イメージ画像 %>
+	    <%= t.attachment_field :shop_image %>
+        <%= t.submit '登録' %>
+<% end %>

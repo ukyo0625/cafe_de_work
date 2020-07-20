@@ -17,9 +17,6 @@ Rails.application.routes.draw do
       resources :owners, only:[:index, :show, :edit, :update]
     end
 
-    root "shops#top"
-    get "shops/search" => "shops#search"
-    resources :shops, only:[:index, :show]
 
     namespace :owners do
       resources :shops, only:[:index, :show, :create, :new, :edit, :update] do
@@ -29,9 +26,13 @@ Rails.application.routes.draw do
 
     namespace :admins do
       resources :shops, only:[:index, :show, :destroy, :edit, :update] do
-      get "shops/search" => "shops#search"
+      get 'search' , on: :collection
       end
     end
+    root "shops#top"
+    get "shops/search" => "shops#search"
+    resources :shops, only:[:index, :show]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

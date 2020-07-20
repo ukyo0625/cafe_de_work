@@ -1,0 +1,8 @@
+index
+<%= link_to "投稿", new_owners_shop_path %>
+
+<% if @shops.present? %> 
+	<% @shops.each do |shop| %>
+	 	<%= shop.shop_name %>
+	<% end %>
+<% end %>
