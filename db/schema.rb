@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_131445) do
+ActiveRecord::Schema.define(version: 2020_07_19_130128) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -53,21 +53,18 @@ ActiveRecord::Schema.define(version: 2020_07_19_131445) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string "shop_name", default: "", null: false
+    t.string "shop_name", null: false
     t.text "shop_detail", null: false
     t.integer "owner_id", null: false
-    t.string "address", default: "", null: false
+    t.string "address", null: false
     t.integer "seat", null: false
-    t.string "open_time", default: "", null: false
-    t.string "close_time", default: "", null: false
-    t.string "holiday", default: "", null: false
-    t.string "phone_number", default: "", null: false
+    t.string "open_time", null: false
+    t.string "close_time", null: false
+    t.string "phone_number", null: false
     t.boolean "is_favorite", default: false, null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
     t.string "shop_image_id"
   end
 

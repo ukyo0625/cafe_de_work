@@ -1,8 +1,40 @@
-index
-<%= link_to "投稿", new_owners_shop_path %>
 
-<% if @shops.present? %> 
-	<% @shops.each do |shop| %>
-	 	<%= shop.shop_name %>
-	<% end %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+		    <h3><%= current_owner.name %>さんの投稿したカフェ一覧</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<table class="table">
+				<thead>
+		       		<tr>
+					    <th>イメージ画像</th>
+					    <th>ショップ名</th>
+					    <th>有効・無効</th>
+		    		</tr>
+			  	</thead>
+			  	<tbody>
+					<% if @shops.present? %> 
+						<% @shops.each do |shop| %>
+					 	    <tr>
+					 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" %>
+					            </td>
+					            <td>
+					            	<h4><%= link_to shop.shop_name , owners_shop_path(shop.id)  %>
+					            	</h4>
+					            </td>
+					            <% if shop.is_active == true %>
+							    <td><h4>有効</h4></td>
+						　　　　 <% elsif shop.is_active == false %>
+							    <td><h4>無効</h4></td>
+						        <% end %>
+					        </tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

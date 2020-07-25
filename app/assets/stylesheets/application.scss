@@ -16,6 +16,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+  background-color: #F0FFF0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #004400;
+}
+
 .nav-list-item {
   list-style: none;
   display: inline-block;
@@ -27,4 +35,15 @@ header {
   padding: 15px 0;
   margin: 0 auto;
   text-align: center;
+}
+footer {
+  position: relative;
+  margin: 20px auto;
+  width: 90%;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.footer-copyright{
+float: center;
 }

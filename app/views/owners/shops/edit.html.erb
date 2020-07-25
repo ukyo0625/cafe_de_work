@@ -1,0 +1,117 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3 col-xs-offset-2 space">
+			<h3>編集フォーム</h3>
+		</div>
+	</div>
+    <% if @shop.errors.any? %>
+       <h3>error</h3>
+       <% @shop.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+        <% end %>
+    <% end %>
+	<%= form_for(@shop, url:"/owners/shops/#{@shop.id}") do |f| %>
+	    <div class="row">
+		    <div class="col-xs-8 col-xs-offset-2">
+		    	<div class="field">
+		    		<div class="row">
+                        <div class="col-xs-2 space">
+                        	<%= f.label :ショップ名 %>
+                        </div>
+                        <div class="col-xs-9 col-xs-offset-1  space">
+                        	<%= f.text_field :shop_name , class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                        	<%= f.label :ショップ詳細 %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                        	<%= f.text_area :shop_detail , class:"form-control space" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                        	<%= f.label :住所 %>
+                        </div>
+                        <div class="col-xs-9 col-xs-offset-1">
+                        	<%= f.text_field :address , class:"form-control space" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                        	<%= f.label :席数（半角数字） %>
+                        </div>
+                        <div class="col-xs-2  col-xs-offset-1">
+                        	<%= f.text_field :seat , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                        	<p class="text_size">席</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                        	<%= f.label :営業時間（半角数字） %>
+                        </div>
+                        <div class="col-xs-2 col-xs-offset-1">
+                        	<%= f.text_field :open_time , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                        	<p class="text_size">時〜</p>
+                        </div>
+                        <div class="col-xs-2">
+                        	<%= f.text_field :close_time , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                        	<p class="text_size">時</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                        	<%= f.label :電話番号 %>
+                        </div>
+                        <div class="col-xs-3 col-xs-offset-1">
+                        	<%= f.text_field :phone_number , class:"form-control space" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                        	<%= f.label :イメージ画像 %>
+                        </div>
+                        <div class="col-xs-3 col-xs-offset-1">
+                        	<%= f.attachment_field :shop_image , class:"space"%>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                        	<%= f.label :有効・無効 %>
+                        </div>
+                        <div class="col-xs-1 col-xs-offset-1">
+                        	<%= f.radio_button :is_active, :true , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                        	<p class="text_size">有効</p>
+                        </div>
+                        <div class="col-xs-1 col-xs-offset-1">
+                        	<%= f.radio_button :is_active, :false , class:"form-control" %>
+                        </div>
+                         <div class="col-xs-1">
+                        	<p class="text_size">無効</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="action col-xs-3 col-xs-offset-4">
+                        	<%= f.submit "編集内容を保存する" , class:"btn btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+
+<%= link_to "戻る" , owners_shop_path %>

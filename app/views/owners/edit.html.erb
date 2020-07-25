@@ -1,1 +1,41 @@
-ユーザー情報編集
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4 space">
+			<h4>オーナー情報編集</h4>
+			<% if @owner.errors.any? %>
+			    <ul>
+				    <% @owner.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				    <% end %>
+			    </ul>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+   		<div class="col-xs-8 col-xs-offset-2 space">
+			<%= form_for(@owner) do |f| %>
+			<div class="row">
+   				<div class="col-xs-2  col-xs-offset-2 space">
+					<%= f.label :名前  %>
+				</div>
+				<div class="col-xs-5">
+					<%= f.text_field :name , class:"form-control" %>
+				</div>
+			</div>
+			<div class="row">
+   				<div class="col-xs-2  col-xs-offset-2 space">
+					<%= f.label :メールアドレス  %>
+				</div>
+				<div class="col-xs-5">
+					<%= f.email_field :email , class:"form-control" %>
+				</div>
+			</div>
+			<div class="row">
+                <div class="action col-xs-2 col-xs-offset-3">
+                    <%= f.submit "編集内容を保存する" , class:"btn btn-primary" %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

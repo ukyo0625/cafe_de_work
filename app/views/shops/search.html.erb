@@ -1,1 +1,18 @@
-検索画面
+<h2>検索画面</h2>
+<%= search_form_for @q do |f| %>
+	<%= f.label :name, "Keyword" %>
+	<%= f.search_field :shop_name_or_shop_detail_cont %>
+
+	<%= f.label :定休日 %>
+	<% days = ["0","1","2","3","4","5","6"] %>
+    <% days.each_with_index do |t,i| %>
+          <div>
+            <%= t.input :holiday_number_eq_any,{ multiple: true, checked: false },i, nil %>
+            <span><%= t %></span>
+          </div>
+    <% end %>
+
+
+    <%= f.submit %>
+<% end %>
+

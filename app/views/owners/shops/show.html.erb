@@ -1,26 +1,72 @@
-show
-
-<%= attachment_image_tag @shop, :shop_image,:fill,50,50  %>
-<%= @shop.shop_name %>
-<%= @shop.shop_detail %>
-<%= @shop.address %>
-
-<style type="text/css">
-  #map { height: 200px;
-         width: 70%;}
-</style>
-
-
-<div id="map"></div>
-<%= @shop.seat %>
-<%= @shop.open_time %>
-<%= @shop.close_time %>
-<% @shop.holidays.each do |h| %>
- <%= holiday(h.holiday_number) %>
-<% end %>
-<%= @shop.phone_number %>
-
-<h2>gmap</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-2">
+      <h3><%= @shop.shop_name %>の情報</h3>
+    </div>
+    <div class="col-xs-3 padd text-left">
+        <%= link_to "編集する" , edit_owners_shop_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-1">
+      <table class="table table-bordered">
+        <tr>
+          <th>　有効/無効　</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th> イメージ画像<br>
+            <%= attachment_image_tag @shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" %>
+          </th>
+          <td>
+            <div class="thick">詳細</div><br>
+            <%= @shop.shop_detail %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @shop.address %></td>
+        </tr>
+        <tr>
+          <th>席数</th>
+          <td><%= @shop.seat %>席</td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td><%= @shop.open_time %>時〜<%= @shop.close_time %>時</td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td>
+            <% @shop.holidays.each do |h| %>
+              <%= holiday(h.holiday_number) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>タグ</th>
+          <td>
+            <% @tag.each do |t| %>
+              <span class="label label-success"><%= t.name %></span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td>
+            <%= @shop.phone_number %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-xs-5">
+      <style type="text/css">
+        #map { height: 400px;
+               width: 400px;}
+      </style>
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
 <!-- 地名入力用のinputを追加 -->
 <!-- <input id="address" type="textbox" value="Sydney, NSW"> -->
 <!-- buttonをクリックしたらcodeAddressを実行　-->
@@ -39,8 +85,8 @@ function initMap(){
   // geocoderを初期化
   geocoder = new google.maps.Geocoder()
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: -34.397, lng: 150.644},
-  zoom: 8
+  center: {lat: 0, lng: 0},
+  zoom: 15
   });
 }
 function codeAddress(){

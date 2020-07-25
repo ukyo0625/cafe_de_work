@@ -1,5 +1,11 @@
 new
-
+<% if @shop_new.errors.any? %>
+    <ul>
+	    <% @shop_new.errors.full_messages.each do |message| %>
+	      <li><%= message %></li>
+	    <% end %>
+    </ul>
+<% end %>
 <%= form_for(@shop_new, url: owners_shops_path) do |t|  %>
 	    <%= t.label :ショップ名 %>
 	    <%= t.text_field :shop_name %>
@@ -21,6 +27,15 @@ new
             <span><%= holiday %></span>
           </div>
         <% end %>
+        <%= t.label :タグ %>
+
+	        <% @tags.each do |tag,i| %>
+
+	          <div>
+	            <%= t.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
+	            <span><%= tag.name %></span>
+	          </div>
+	        <% end %>
 	    <%= t.label :電話番号 %>
 	    <%= t.text_field :phone_number %>
         <%= t.label :イメージ画像 %>
