@@ -17,18 +17,20 @@
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <% if owner_signed_in? %>
-            　<li class="nav-list-item"><h5>ようこそ、<%= current_owner.name %>さん！</h5></li>
+            <% if admin_signed_in? %>
+            <li class="nav-list-item"><%= link_to 'トップページ', admins_top_path %></li>
+            　<li class="nav-list-item"><%= link_to 'オーナー一覧', admins_owners_path %></li>
+            <li class="nav-list-item"><%= link_to 'ショップ検索', search_admins_shops_path %></li>
+            <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+            <% elsif owner_signed_in? %>
+
+            <li class="nav-list-item"><h5>ようこそ、<%= current_owner.name %>さん！</h5></li>
               <li class="nav-list-item"><%= link_to '投稿ページ', new_owners_shop_path %></li>
               <li class="nav-list-item"><%= link_to '一覧', owners_shops_path %></li>
               <li class="nav-list-item"><%= link_to '登録情報編集', edit_owner_path(current_owner.id) %></li>
               <li class="nav-list-item"><%= link_to 'ログアウト', destroy_owner_session_path, method: :delete %>
               <li class="nav-list-item"><%= link_to '退会', owners_confirm_path %></li>
               </li>
-            <% elsif admin_signed_in? %>
-            <li class="nav-list-item"><%= link_to 'オーナー一覧', admins_owners_path %></li>
-            <li class="nav-list-item"><%= link_to 'ショップ検索', search_admins_shops_path %></li>
-            <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
             <% else %>
             　<li class="nav-list-item"><%= link_to 'TOPページ', root_path %></li>
             　<li class="nav-list-item"><%= link_to '検索', shops_search_path %></li>

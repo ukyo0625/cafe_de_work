@@ -1,2 +1,33 @@
-<h1>トップページ</h1>
-<p>アドミンがお気に入り指定したカフェを４つくらい表示する</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4 space text-center">
+			<h4>本日のおすすめカフェ</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1 space ">
+			<table class="table index_table">
+				<thead>
+					<tr>
+						<th class="image"></th>
+						<th class="shop_title">ショップ名/詳細</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @shop_favorite.each do |shop| %>
+				 	    <tr>
+				 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
+				            </td>
+				            <td>
+				            	<h4><%= link_to shop.shop_name ,shop_path(shop.id)  %>
+				            	</h4>
+				            	<p><%= shop.shop_detail %>
+				            	</p>
+				            </td>
+				        </tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

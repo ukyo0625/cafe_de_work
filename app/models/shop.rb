@@ -17,4 +17,10 @@ class Shop < ApplicationRecord
 	validates :phone_number,presence: true
 	validates :phone_number, numericality: true
 
+	scope :with_tags, -> { joins(:shop_tags) }
+
+	scope :search_by_tags, -> (tag_ids) {
+		with_tags.where(shop_tags: { tag_id: tag_ids })
+	}
+
 end

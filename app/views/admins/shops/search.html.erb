@@ -1,11 +1,10 @@
-
 <div class="container">
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4 text-center space">
             <h3>検索画面</h3>
         </div>
     </div>
-    <%= search_form_for @q do |f| %>
+    <%= search_form_for @q , { url: admins_shops_path} do |f| %>
         <div class="row">
             <div class="col-xs-2 col-xs-offset-3 text-center">
                 <%= f.label :name, "キーワード検索" %>

@@ -1,44 +1,143 @@
-new
-<% if @shop_new.errors.any? %>
-    <ul>
-	    <% @shop_new.errors.full_messages.each do |message| %>
-	      <li><%= message %></li>
-	    <% end %>
-    </ul>
-<% end %>
-<%= form_for(@shop_new, url: owners_shops_path) do |t|  %>
-	    <%= t.label :ショップ名 %>
-	    <%= t.text_field :shop_name %>
-	    <%= t.label :ショップ詳細 %>
-	    <%= t.text_area :shop_detail %>
-	    <%= t.label :住所 %>
-	    <%= t.text_field :address %>
-	    <%= t.label :席数 %>
-	    <%= t.text_field :seat %>
-	    <%= t.label :営業時間 %>
-	    <%= t.label :開店時間 %>
-	    <%= t.text_field :open_time %>
-	    <%= t.label :閉店時間 %>
-	    <%= t.text_field :close_time %>
-	    <%= t.label :定休日 %>
-	    <% ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"].each_with_index do |holiday,i| %>
-          <div>
-            <%= t.check_box :holiday,{ multiple: true, checked: false },i, nil %>
-            <span><%= holiday %></span>
-          </div>
-        <% end %>
-        <%= t.label :タグ %>
 
-	        <% @tags.each do |tag,i| %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3 col-xs-offset-2 space">
+			<h3>投稿フォーム</h3>
+		</div>
+	</div>
+	<% if @shop_new.errors.any? %>
+	    <ul>
+		    <% @shop_new.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+	    </ul>
+	<% end %>
+    <%= form_for(@shop_new, url: owners_shops_path) do |t|  %>
+	    <div class="row">
+		    <div class="col-xs-8 col-xs-offset-2">
+		    	<div class="field">
+		    		<div class="row">
+                        <div class="col-xs-2 space">
+                            <%= t.label :ショップ名 %>
+                        </div>
+                        <div class="col-xs-9 col-xs-offset-1  space">
+                        <%= t.text_field :shop_name , class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 space">
+                            <%= t.label :ショップ詳細 %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 space">
+                            <%= t.text_area :shop_detail , class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 space space">
+                            <%= t.label :住所 %>
+                        </div>
+                        <div class="col-xs-9 col-xs-offset-1">
+                            <%= t.text_field :address , class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 space">
+                            <%= t.label :席数（半角数字） %>
+                        </div>
+                        <div class="col-xs-2  col-xs-offset-1">
+                            <%= t.text_field :seat , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                            <p class="text_size">席</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 space">
+                            <%= t.label :営業時間（半角数字） %>
+                        </div>
+                        <div class="col-xs-2 col-xs-offset-1">
+                            <%= t.text_field :open_time , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                        	<p class="text_size">時〜</p>
+                        </div>
+                        <div class="col-xs-2">
+                            <%= t.text_field :close_time , class:"form-control" %>
+                        </div>
+                        <div class="col-xs-1">
+                            <p class="text_size">時</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 space">
+                        	<%= t.label :電話番号 %>
+                        </div>
+                        <div class="col-xs-3 col-xs-offset-1">
+                        	<%= t.text_field :phone_number , class:"form-control space" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 space">
+                        	<%= t.label :イメージ画像 %>
+                        </div>
+                        <div class="col-xs-3 col-xs-offset-1">
+                        	<%= t.attachment_field :shop_image , class:"space" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 space">
+                            <%= t.label :定休日 %>
+                        </div>
+                        <div class="col-xs-9">
+                        	<ul class="edit_list">
+                                <% ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"].each_with_index do |holiday,i| %>
+								    <% if @holidays_select.include?(i.to_s) %>
+								        <li>
+								            <%= t.check_box :holiday,{ multiple: true, checked: true },i, nil %>
+								            <span><%= holiday %></span>
+								        </li>
+								    <% else %>
+								        <li>
+								            <%= t.check_box :holiday,{ multiple: true, checked: false },i, nil %>
+								            <span><%= holiday %></span>
+								        </li>
+							        <% end %>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 space">
+                             <%= t.label :タグ %>
+                         </div>
+                         <div class="col-xs-9 space">
+                            <ul class="edit_list tags">
+						        <% @tags.each do |tag,i| %>
+						            <% if @tags_select.include?(tag.id.to_s) %>
+						                <li>
+						                    <%= t.check_box :tag,{ multiple: true, checked: true }, tag.id, nil %>
+								            <span><%= tag.name %></span>
+								        </li>
+								    <% else %>
+									    <li>
+							                <%= t.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
+								            <span><%= tag.name %></span>
+									    </li>
+									<% end %>
+						        <% end %>
+						    </ul>
+						</div>
+					</div>
+					<div class="row">
+                        <div class="action col-xs-3 col-xs-offset-4">
+				            <%= t.submit '投稿' , class:"btn btn-primary" %>
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+    <% end %>
+</div>
 
-	          <div>
-	            <%= t.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
-	            <span><%= tag.name %></span>
-	          </div>
-	        <% end %>
-	    <%= t.label :電話番号 %>
-	    <%= t.text_field :phone_number %>
-        <%= t.label :イメージ画像 %>
-	    <%= t.attachment_field :shop_image %>
-        <%= t.submit '登録' %>
-<% end %>

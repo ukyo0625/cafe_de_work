@@ -12,7 +12,13 @@
       <table class="table table-bordered">
         <tr>
           <th>　有効/無効　</th>
-          <td></td>
+          <td>
+            <% if @shop.is_active == true %>
+                有効
+            <% else  %>
+                無効
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th> イメージ画像<br>

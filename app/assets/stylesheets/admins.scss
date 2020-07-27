@@ -2,6 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .space{
 	margin-bottom: 20px ;
+}
+.font{
+	padding : 2px 0 ;
+	font-size: 15px ;
+	font-weight: lighter ;
+}
+.thick{
+	font-weight: bolder;
+}
+
+.padd{
+	padding: 25px 0;
+}
+.text_size{
+	padding : 15px 0 ;
+	font-size: 15px ;
+}
+
+.font_mini{
+	font-size: 3px ;
+}
+
+.center {
+    position: center;
+    padding-left: 55px ;
+ }
+
+
+.edit_list li{
+	display:table-cell;
+	float: left;
+}
+.tags li{
+  width: 50%;
+}
+.show_table{
+	position: center;
+	text-align: center;
+	float: center;
+}
+th.image{
+	text-align: center;
+	width: 15% ;
+}
+
+th.shop_title {
+ text-align: center;
+ width: 50% ;
+ }
+
+
+.tags_address{
+    text-align: center;
+    width: 35% ;
 }

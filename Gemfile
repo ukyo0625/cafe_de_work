@@ -84,3 +84,5 @@ gem 'geocoder'
 
 gem 'ransack'
 
+gem 'kaminari'
+
