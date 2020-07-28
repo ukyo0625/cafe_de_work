@@ -8,10 +8,10 @@
     <div class="col-xs-6 col-xs-offset-1">
       <table class="table table-bordered">
         <tr>
-          <th>
+          <th class="th_show">
             <%= attachment_image_tag @shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_show_img" %>
           </th>
-          <td>
+          <td class="td_show">
             <%= @shop.shop_detail %></td>
         </tr>
         <tr>
