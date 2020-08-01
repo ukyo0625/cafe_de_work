@@ -9,12 +9,21 @@ class ShopsController < ApplicationController
 
 	def search
         @q = Shop.ransack(params[:q])
-        @shops = @q.result(distinct: true)
 	end
 
 	def index
+		param_shop_tag_ids = params[:q][:shop_tags_tag_id_in_any].presence && params[:q][:shop_tags_tag_id_in_any].map(&:to_i)
+		params[:q].delete(:shop_tags_tag_id_in_any)
 	    @q = Shop.search(search_params)
-	    @shops = @q.result(distinct: true).where(is_active: true).page(params[:page]).per(10)
+	    shops = @q.result(distinct: true).where(is_active: true)
+	    if param_shop_tag_ids.present?
+	        @shops = shops.select do |shop|
+	            target_shop_tag_ids = shop.shop_tags.map(&:tag_id)
+	            param_shop_tag_ids.all? {|i| target_shop_tag_ids.include?(i)}
+	        end
+	    else
+	    	@shops = shops
+	    end
 	end
 	def show
 		@shop = Shop.find(params[:id])
@@ -23,6 +32,6 @@ class ShopsController < ApplicationController
 
 	private
 	def search_params
-	    params.require(:q).permit(:shop_name_or_shop_detail_cont, holidays_holiday_number_not_in: [], shop_tags_tag_id_in_any: [])
+	    params.require(:q).permit(:shop_name_or_shop_detail_cont, holidays_holiday_number_not_in: [])
 	end
 end
