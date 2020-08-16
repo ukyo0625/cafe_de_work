@@ -86,3 +86,5 @@ gem 'ransack'
 
 gem 'kaminari'
 
+gem 'carrierwave'
+
