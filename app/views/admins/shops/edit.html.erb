@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-3 col-xs-offset-2 space">
+		<div class="col-xs-4 col-xs-offset-4 space text-center">
 			<h3>編集フォーム</h3>
 		</div>
 	</div>
@@ -15,16 +15,16 @@
 		    <div class="col-xs-8 col-xs-offset-2">
 		    	<div class="field">
                     <div class="row">
-                        <div class="col-xs-3 space">
+                        <div class="col-xs-4 space text-right">
                             <%= f.label :トップページに表示 %>
                         </div>
-                        <div class="col-xs-1 col-xs-offset-1">
+                        <div class="col-xs-1">
                                 <%= f.radio_button :is_favorite, :true , class:"form-control" %>
                             </div>
                             <div class="col-xs-2">
                                 <p class="text_size">表示</p>
                             </div>
-                            <div class="col-xs-1 col-xs-offset-1">
+                            <div class="col-xs-1">
                                 <%= f.radio_button :is_favorite, :false , class:"form-control" %>
                             </div>
                              <div class="col-xs-2">
@@ -33,16 +33,16 @@
                         </div>
                     </div>
 		    		<div class="row">
-                        <div class="col-xs-2 space">
+                        <div class="col-xs-4 space text-right">
                         	<%= f.label :ショップ名 %>
                         </div>
-                        <div class="col-xs-9 col-xs-offset-1  space">
+                        <div class="col-xs-8 space">
                         	<%= f.text_field :shop_name , class:"form-control" %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2">
-                        	<%= f.label :ショップ詳細 %>
+                        <div class="col-xs-4 space text-right">
+                        	<%= f.label :　ショップ詳細 %>
                         </div>
                     </div>
                     <div class="row">
@@ -51,18 +51,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4 space text-right">
                         	<%= f.label :住所 %>
                         </div>
-                        <div class="col-xs-9 col-xs-offset-1">
+                        <div class="col-xs-8">
                         	<%= f.text_field :address , class:"form-control space" %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-3">
-                        	<%= f.label :席数（半角数字） %>
+                        <div class="col-xs-4 text-right space">
+                        	<%= f.label :席数（半角） %>
                         </div>
-                        <div class="col-xs-2  col-xs-offset-1">
+                        <div class="col-xs-2">
                         	<%= f.text_field :seat , class:"form-control" %>
                         </div>
                         <div class="col-xs-1">
@@ -70,10 +70,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-3">
-                        	<%= f.label :営業時間（半角数字） %>
+                        <div class="col-xs-4 text-right space">
+                        	<%= f.label :営業時間（半角） %>
                         </div>
-                        <div class="col-xs-2 col-xs-offset-1">
+                        <div class="col-xs-2">
                         	<%= f.text_field :open_time , class:"form-control" %>
                         </div>
                         <div class="col-xs-1">
@@ -87,28 +87,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4 text-right">
                         	<%= f.label :電話番号 %>
                         </div>
-                        <div class="col-xs-3 col-xs-offset-1">
+                        <div class="col-xs-3">
                         	<%= f.text_field :phone_number , class:"form-control space" %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4 text-right space">
                         	<%= f.label :イメージ画像 %>
                         </div>
-                        <div class="col-xs-3 col-xs-offset-1">
+                        <div class="col-xs-3">
                         	<%= f.attachment_field :shop_image , class:"space" %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4 text-right space">
 
-                            <%= f.label :定休日 %>
+                            <%= f.label :　　定休日, {class: 'pull-center'} %>
                         </div>
-                        <div class="col-xs-9">
-                            <ul class="edit_list">
+                        <div class="col-xs-8">
+                            <ul class="edit_list pull-left">
                                 <% ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"].each_with_index do |holiday,i| %>
                                     <% if @holidays_select.include?(i) %>
                                         <li><%= f.check_box :holiday,{ multiple: true, checked: true },i, nil %>
@@ -124,10 +124,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2 space">
-                            <%= f.label :タグ %>
+                        <div class="col-xs-4 text-right space">
+                            <%= f.label :　　タグ, {class: 'pull-center'} %>
                         </div>
-                        <div class="col-xs-9 space">
+                        <div class="col-xs-8 space">
                             <ul class="edit_list tags">
                                 <% @tags.each do |tag,i| %>
                                     <% if @tags_select.include?(tag.id) %>
@@ -147,24 +147,24 @@
                             </ul>
                         </div>
                         <div class="row">
-                            <div class="col-xs-2">
-                            	<%= f.label :有効・無効 %>
-                            </div>
-                            <div class="col-xs-1 col-xs-offset-1">
-                            	<%= f.radio_button :is_active, :true , class:"form-control" %>
+                            <div class="col-xs-4 text-right space">
+                            	<%= f.label :　　有効・無効 %>
                             </div>
                             <div class="col-xs-1">
+                            	<%= f.radio_button :is_active, :true , class:"form-control" %>
+                            </div>
+                            <div class="col-xs-2">
                             	<p class="text_size">有効</p>
                             </div>
-                            <div class="col-xs-1 col-xs-offset-1">
+                            <div class="col-xs-1">
                             	<%= f.radio_button :is_active, :false , class:"form-control" %>
                             </div>
-                             <div class="col-xs-1">
+                             <div class="col-xs-2">
                             	<p class="text_size">無効</p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="action col-xs-3 col-xs-offset-4">
+                            <div class="action col-xs-4 col-xs-offset-4 text-center">
                             	<%= f.submit "編集内容を保存する" , class:"btn btn-primary" %>
                             </div>
                         </div>

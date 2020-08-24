@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 text-center space">
-      <h3>オーナーの方はこちらから会員登録</h3>
+    <div class="col-xs-8 col-xs-offset-2 text-center space">
+      <h3>　　オーナーの方はこちらから会員登録</h3>
     </div>
   </div>
   <div class="row">
@@ -11,7 +11,7 @@
 
         <div class="field">
           <div class="row">
-            <div class="col-xs-4  col-xs-offset-2 space">
+            <div class="col-xs-5 col-xs-offset-2 space">
               <%= f.label :名前 , class:"font" %>
             </div>
             <div class="col-xs-4 space">
@@ -22,7 +22,7 @@
 
         <div class="field">
           <div class="row">
-            <div class="col-xs-4 col-xs-offset-2 space">
+            <div class="col-xs-5 col-xs-offset-2 space">
               <%= f.label :メールアドレス , class:"font" %>
             </div>
             <div class="col-xs-4 space">
@@ -33,7 +33,7 @@
 
         <div class="field">
           <div class="row">
-            <div class="col-xs-4 col-xs-offset-2 space">
+            <div class="col-xs-5 col-xs-offset-2 space">
               <%= f.label :パスワード（6文字以上）, class:"font" %>
             </div>
             <div class="col-xs-4 space">
@@ -44,7 +44,7 @@
 
         <div class="field">
           <div class="row">
-            <div class="col-xs-4 col-xs-offset-2 space">
+            <div class="col-xs-5 col-xs-offset-2 space">
               <%= f.label :パスワード（確認用）, class:"font" %>
             </div>
             <div class="col-xs-4 space">
@@ -54,7 +54,7 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-6  col-xs-offset-3">
+          <div class="col-xs-6 col-xs-offset-4">
             <div class="actions">
               <%= f.submit "新規登録" , class:"btn btn-primary" %>
             </div>
@@ -62,13 +62,13 @@
         </div>
       <% end %>
       <div class="row">
-        <div class="col-xs-6  col-xs-offset-3">
+        <div class="col-xs-6 col-xs-offset-4">
 
           <h3> すでに登録済みの方</h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
+        <div class="col-xs-6 col-xs-offset-4">
           <p><%= link_to "こちら" , new_owner_session_path %>
              からログインしてください
           </p>
