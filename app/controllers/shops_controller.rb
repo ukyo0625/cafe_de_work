@@ -9,6 +9,7 @@ class ShopsController < ApplicationController
 
 	def search
         @q = Shop.ransack(params[:q])
+        @prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
 	end
 
 	def index
@@ -33,6 +34,6 @@ class ShopsController < ApplicationController
 
 	private
 	def search_params
-	    params.require(:q).permit(:shop_name_or_shop_detail_cont, holidays_holiday_number_not_in: [])
+	    params.require(:q).permit(:shop_name_or_shop_detail_cont, :stations_station_name_cont ,holidays_holiday_number_not_in: [])
 	end
 end

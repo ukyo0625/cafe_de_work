@@ -4,7 +4,7 @@
       <h3><%= @shop.shop_name %>の情報</h3>
     </div>
     <div class="col-xs-3 padd text-left">
-        <%= link_to "編集する" , edit_admins_shop_path %>
+        <%= link_to "編集する" , edit_owners_shop_path %>
     </div>
   </div>
   <div class="container-fluid">
@@ -32,6 +32,14 @@
           <tr>
             <th>住所</th>
             <td><%= @shop.address %></td>
+          </tr>
+          <tr>
+            <th>最寄駅</th>
+            <td>
+              <% @shop.stations.each do |h| %>
+                <%= h.station_name %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th>席数</th>

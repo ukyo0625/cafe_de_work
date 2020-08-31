@@ -109,27 +109,45 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4 text-right space">
-                             <%= t.label :　　タグ　　 %>
-                         </div>
-                         <div class="col-xs-8 space">
-                            <ul class="edit_list tags">
-						        <% @tags.each do |tag,i| %>
-						            <% if @tags_select.include?(tag.id.to_s) %>
-						                <li>
-						                    <%= t.check_box :tag,{ multiple: true, checked: true }, tag.id, nil %>
-								            <span><%= tag.name %></span>
-								        </li>
-								    <% else %>
-									    <li>
-							                <%= t.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
-								            <span><%= tag.name %></span>
-									    </li>
-									<% end %>
-						        <% end %>
-						    </ul>
-						</div>
-					</div>
+                      <div class="col-xs-4 text-right space">
+                        <%= t.label :　　タグ　　 %>
+                      </div>
+                      <div class="col-xs-8 space">
+                        <ul class="edit_list tags">
+                          <% @tags.each do |tag,i| %>
+                            <% if @tags_select.include?(tag.id.to_s) %>
+                              <li>
+                                <%= t.check_box :tag,{ multiple: true, checked: true }, tag.id, nil %>
+                                <span><%= tag.name %></span>
+                              </li>
+                            <% else %>
+                              <li>
+                                <%= t.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
+                                <span><%= tag.name %></span>
+                              </li>
+                            <% end %>
+                          <% end %>
+                        </ul>
+                      </div>
+          					</div>
+                    <%= t.fields_for :stations do |station_f| %>
+                        <div class="row">
+                            <div class="col-xs-4 text-right space">
+                                <%= station_f.label '最寄駅（複数選択可）'%>
+                            </div>
+                            
+                            <div class="col-xs-2 space">
+                                <%= station_f.select(:prefecture, options_for_select(@prefecture_options), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select"})  %>
+                            </div>
+                            <div class="col-xs-2 space">
+                                <%= station_f.select(:line, options_for_select([]) , {include_blank:'路線'}, {id: 'line', class:"js_line_select"}) %>
+                            </div>
+                            <div class="col-xs-2 space">
+                                <%= station_f.select(:station_name, options_for_select([]) ,{include_blank:'駅名'},{ class:"js_station_select"}) %>
+                            </div>
+                        </div>
+                    <% end %>
+
 					<div class="row">
                         <div class="action col-xs-4 col-xs-offset-4 text-center">
 				            <%= t.submit '投稿' , class:"btn btn-primary" %>

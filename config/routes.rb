@@ -33,6 +33,17 @@ Rails.application.routes.draw do
     get "shops/search" => "shops#search"
     resources :shops, only:[:index, :show]
 
+    namespace :api do
+      namespace :v1 do
+        resources :lines, only: :index
+      end
+    end
+
+    namespace :api do
+      namespace :v1 do
+        resources :stations, only: :index
+      end
+    end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

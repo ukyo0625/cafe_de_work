@@ -9,10 +9,10 @@
 
 			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 			    <div class="row">
-				    <div class="col-xs-10 col-xs-offset-2">
+				    <div class="col-xs-10 col-xs-offset-1">
                         <div class="field">
 					    	<div class="row">
-				                <div class="col-xs-3 space">
+				                <div class="col-xs-5 space text-right">
 							        <%= f.label :メールアドレス , class:"font" %>
 							    </div>
 							    <div class="col-xs-6 space">
@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-xs-offset-2">
+					<div class="col-xs-6 col-xs-offset-3">
 
 					    <div class="actions">
 					        <%= f.submit "パスワードをリセットする" , class:"btn btn-primary" %>
@@ -32,7 +32,7 @@
 				</div>
 			<% end %>
 			<div class="row">
-				<div class="col-xs-6 col-xs-offset-2">
+				<div class="col-xs-6 col-xs-offset-3">
 
 			        <%= link_to "ログイン画面に戻る" , new_owner_session_path  %>
 			    </div>

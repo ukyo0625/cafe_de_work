@@ -20,6 +20,14 @@
             <td><%= @shop.address %></td>
           </tr>
           <tr>
+            <th>最寄駅</th>
+            <td>
+              <% @shop.stations.each do |h| %>
+                <%= h.station_name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
             <th>席数</th>
             <td><%= @shop.seat %>席</td>
           </tr>

@@ -9,15 +9,21 @@ class Owners::ShopsController < ApplicationController
 	end
 	def new
 		@shop_new = Shop.new
+		stations = [Station.new, Station.new, Station.new]
+		@shop_new.stations << stations
 		@tags = Tag.all
 		@holidays_select = []
 		@tags_select = []
+		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+
 	end
+
 	def edit
 		@shop = Shop.find(params[:id])
 		@tags = Tag.all
 		@holidays_select = @shop.holidays.pluck(:holiday_number)
 		@tags_select = @shop.shop_tags.pluck(:tag_id)
+		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
 	end
 	def create
 		@shop_new = Shop.new(shop_params)
@@ -25,23 +31,22 @@ class Owners::ShopsController < ApplicationController
 		@tags_select = holiday_tag_params[:tag].present? ? holiday_tag_params[:tag] : []
 		@shop_new.owner_id = current_owner.id
 		unless @holidays_select.blank?
-		    @holidays_select.each do |holiday_number|
-		       @shop_new.holidays.build(holiday_number: holiday_number)
-		    end
+		  @holidays_select.each do |holiday_number|
+		     @shop_new.holidays.build(holiday_number: holiday_number)
+		  end
 	    end
 	    unless @tags_select.blank?
-	        @tags_select.each do |tag_id|
-		        @shop_new.shop_tags.build(tag_id: tag_id)
-		    end
+	      @tags_select.each do |tag_id|
+	        @shop_new.shop_tags.build(tag_id: tag_id)
+		  end
 	    end
 		if @shop_new.save
-		   redirect_to owners_shop_path(@shop_new.id)
-	    else
-	       @tags = Tag.all
-			@holidays_select = @shop.holidays.pluck(:holiday_number)
-			@tags_select = @shop.shop_tags.pluck(:tag_id)
-	       render :new
-	    end
+			redirect_to owners_shop_path(@shop_new.id)
+		else
+			@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+			@tags = Tag.all
+			render :new
+		end
 	end
 	def update
 		@shop = Shop.find(params[:id])
@@ -57,9 +62,14 @@ class Owners::ShopsController < ApplicationController
 		        @shop.shop_tags.build(tag_id: tag_id)
 		    end
 	    end
+	    @shop.stations.delete_all
 		if @shop.update(shop_params)
 		   redirect_to owners_shop_path(@shop.id)
 		else
+			@tags = Tag.all
+			@holidays_select = @shop.holidays.pluck(:holiday_number)
+			@tags_select = @shop.shop_tags.pluck(:tag_id)
+			@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
 		   render :edit
 		end
 	end
@@ -68,7 +78,24 @@ class Owners::ShopsController < ApplicationController
 
 	private
 	  def shop_params
-	      params.require(:shop).permit(:shop_name, :shop_detail, :owner_id, :address, :seat, :open_time, :close_time, :phone_number, :shop_image, :is_favorite , :is_active)
+	      params.require(:shop).permit(
+	      	:shop_name,
+	      	:shop_detail,
+	      	:owner_id,
+	      	:address,
+	      	:seat,
+	      	:open_time,
+	      	:close_time,
+	      	:phone_number,
+	      	:shop_image,
+	      	:is_favorite,
+	      	:is_active,
+	      	stations_attributes: [
+	      		:prefecture,
+	      		:line,
+	      		:station_name
+	      	]
+	      )
 	  end
 	  def holiday_tag_params
 	      params.require(:shop).permit(holiday: [],tag: [])

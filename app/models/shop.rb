@@ -2,6 +2,8 @@ class Shop < ApplicationRecord
 	attachment :shop_image
 	has_many :holidays
 	has_many :shop_tags
+	has_many :stations
+	accepts_nested_attributes_for :stations
 
 	validates :shop_name,presence: true
 	validates :shop_name,    length: { in: 1..20 }

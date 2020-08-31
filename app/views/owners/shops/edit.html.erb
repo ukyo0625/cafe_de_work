@@ -128,6 +128,22 @@
                                 <% end %>
                             </ul>
                         </div>
+                        <%= f.fields_for :stations do |station_f| %>
+                        <div class="row">
+                            <div class="col-xs-4 text-right space">
+                                <%= station_f.label '最寄駅（複数選択可）'%>
+                            </div>
+                            <div class="col-xs-2 space">
+                                <%= station_f.select(:prefecture, options_for_select(@prefecture_options,selected: station_f.object.prefecture), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select"})  %>
+                            </div>
+                            <div class="col-xs-2 space">
+                                <%= station_f.select(:line, options_for_select(line_option(station_f.object.prefecture).to_a, selected: station_f.object.line) , {include_blank:'路線'}, {id: 'line', class:"js_line_select"}) %>
+                            </div>
+                            <div class="col-xs-2 space">
+                                <%= station_f.select(:station_name, options_for_select(station_option(station_f.object.line).to_a, selected: station_f.object.station_name) ,{include_blank:'駅名'},{ class:"js_station_select"}) %>
+                            </div>
+                        </div>
+                    <% end %>
                         <div class="row">
                             <div class="col-xs-2">
                             	<%= f.label :有効・無効 %>
@@ -160,3 +176,5 @@
 
 
 <%= link_to "戻る" , owners_shop_path %>
+
+
