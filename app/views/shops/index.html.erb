@@ -5,38 +5,46 @@
 			<h4>検索結果</h4>
 		</div>
 	</div>
-    <div class="row">
-		<div class="col-xs-10 col-xs-offset-1 space">
-			<table class="table">
-				<thead>
-					<tr>
-						<th class="image"></th>
-						<th class="shop_title">ショップ名/詳細</th>
-						<th class="tags_address">タグ/住所</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @shops.each do |shop| %>
-					    <tr>
-							<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
-							</td>
-							<td><%= link_to shop.shop_name , shop_path(shop) %><br>
-								 <%= shop.shop_detail %>
-							</td>
-							<td>
-								<% shop.shop_tags.each do |tag| %>
-									<span class="label label-success">
-									  	<%= tag.tag.name %>
-									</span>,
-							    <% end %><br>
-							    <%= shop.address %>
-							</td>
+	<% if @shops.empty? %>
+	    <div class="col-xs-8 col-xs-offset-2 text-center">
+	        <h4>申し訳ございません<br>
+	        	一致するカフェは投稿されていません
+	        </h4>
+	    </div>
+	<% else %>
+	    <div class="row">
+			<div class="col-xs-10 col-xs-offset-1 space">
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="image"></th>
+							<th class="shop_title">ショップ名/詳細</th>
+							<th class="tags_address">タグ/住所</th>
 						</tr>
-					<% end %>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<% @shops.each do |shop| %>
+						    <tr>
+								<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
+								</td>
+								<td><%= link_to shop.shop_name , shop_path(shop) %><br>
+									 <%= shop.shop_detail %>
+								</td>
+								<td>
+									<% shop.shop_tags.each do |tag| %>
+										<span class="label label-success">
+										  	<%= tag.tag.name %>
+										</span>,
+								    <% end %><br>
+								    <%= shop.address %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
+	<% end %>
 	<div class="col-xs-4 col-xs-offset-4 text-center">
         <%= paginate @shops %>
     </div>

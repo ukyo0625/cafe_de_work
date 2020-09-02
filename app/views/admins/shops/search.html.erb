@@ -54,8 +54,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="action col-xs-4 col-xs-offset-4 text-center">
-                <%= f.submit "検索する" , class:"btn btn-primary" %>
+            <div class="col-xs-8 col-xs-offset-2 text-center space">
+                <div class="row">
+                    <div class="col-xs-6 text-center space">
+                        <%= f.label :最寄駅 %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-xs-offset-3 text-left space">
+                        <%= select_tag(:prefecture,options_for_select(@prefecture_options), {include_blank:'都道府県', id: 'pref', class: "js_pref_select"})  %>
+                    </div>
+                    <div class="col-xs-3 text-center space">
+                        <%= select_tag(:line, options_for_select([]) , {include_blank:'〜　　路　線　　〜',id: 'line', class:"js_line_select"}) %>
+                    </div>
+                    <div class="col-xs-3 text-center space">
+                        <%= f.select(:stations_station_name_cont,options_for_select([]),{include_blank:'〜　　駅　名　　〜'}, {class:"js_station_select"}) %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="action col-xs-4 col-xs-offset-4 text-center">
+                        <%= f.submit "検索する" , class:"btn btn-primary" %>
+                    </div>
+                </div>
             </div>
         </div>
     <% end %>

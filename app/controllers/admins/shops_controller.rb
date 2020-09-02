@@ -9,6 +9,7 @@ class Admins::ShopsController < ApplicationController
 		@tags = Tag.all
 		@holidays_select = @shop.holidays.pluck(:holiday_number)
 		@tags_select = @shop.shop_tags.pluck(:tag_id)
+		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 	end
     def update
 		@shop = Shop.find(params[:id])
@@ -24,17 +25,19 @@ class Admins::ShopsController < ApplicationController
 		        @shop.shop_tags.build(tag_id: tag_id)
 		    end
 	    end
+	    @shop.stations.delete_all
 		if @shop.update(shop_params)
 		   redirect_to admins_shop_path(@shop.id)
 		else
 			@tags = Tag.all
 			@holidays_select = @shop.holidays.pluck(:holiday_number)
-			@tags_select = @shop.shop_tags.pluck(:tag_id)
+			@tags_select = @shop.shop_tags.pluck(:tag_id)[['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']][['東京都', '01000'],['埼玉県', '02000']]
 		   render :edit
 		end
 	end
 	def search
         @q = Shop.ransack(params[:q])
+        @prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 	end
 	def index
 	    param_shop_tag_ids = params[:q][:shop_tags_tag_id_in_any].presence && params[:q][:shop_tags_tag_id_in_any].map(&:to_i)
@@ -53,12 +56,29 @@ class Admins::ShopsController < ApplicationController
 	end
 	private
 	def shop_params
-	    params.require(:shop).permit(:shop_name, :shop_detail, :owner_id, :address, :seat, :open_time, :close_time, :phone_number, :shop_image, :is_favorite , :is_active)
-	end
+	      params.require(:shop).permit(
+	      	:shop_name,
+	      	:shop_detail,
+	      	:owner_id,
+	      	:address,
+	      	:seat,
+	      	:open_time,
+	      	:close_time,
+	      	:phone_number,
+	      	:shop_image,
+	      	:is_favorite,
+	      	:is_active,
+	      	stations_attributes: [
+	      		:prefecture,
+	      		:line,
+	      		:station_name
+	      	]
+	      )
+	  end
 	def holiday_tag_params
 	      params.require(:shop).permit(holiday: [],tag: [])
 	end
 	def search_params
-	    params.require(:q).permit(:shop_name_or_shop_detail_cont, holidays_holiday_number_not_in: [], shop_tags_tag_id_in_any: [])
+	    params.require(:q).permit(:shop_name_or_shop_detail_cont, :stations_station_name_cont ,holidays_holiday_number_not_in: [])
 	end
 end

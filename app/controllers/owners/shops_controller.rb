@@ -14,7 +14,7 @@ class Owners::ShopsController < ApplicationController
 		@tags = Tag.all
 		@holidays_select = []
 		@tags_select = []
-		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 
 	end
 
@@ -23,7 +23,7 @@ class Owners::ShopsController < ApplicationController
 		@tags = Tag.all
 		@holidays_select = @shop.holidays.pluck(:holiday_number)
 		@tags_select = @shop.shop_tags.pluck(:tag_id)
-		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 	end
 	def create
 		@shop_new = Shop.new(shop_params)
@@ -43,7 +43,7 @@ class Owners::ShopsController < ApplicationController
 		if @shop_new.save
 			redirect_to owners_shop_path(@shop_new.id)
 		else
-			@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+			@prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 			@tags = Tag.all
 			render :new
 		end
@@ -69,7 +69,7 @@ class Owners::ShopsController < ApplicationController
 			@tags = Tag.all
 			@holidays_select = @shop.holidays.pluck(:holiday_number)
 			@tags_select = @shop.shop_tags.pluck(:tag_id)
-			@prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+			@prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 		   render :edit
 		end
 	end

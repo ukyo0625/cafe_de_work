@@ -3,7 +3,7 @@ $(function(){
   $(document).on("change", ".js_line_select",function(){
     let stations_element = $(this).closest(".row").find(".js_station_select")
     stations_element.empty()
-    stations_element.append("<option>駅名</option>"); 
+    stations_element.append("<option>〜　　駅　名　　〜</option>"); 
 
     $.ajax({
       url: "/api/v1/stations?line=" + $(this).val(),

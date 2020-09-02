@@ -9,7 +9,7 @@ class ShopsController < ApplicationController
 
 	def search
         @q = Shop.ransack(params[:q])
-        @prefecture_options = [['東京都', '01000'],['埼玉県', '02000']]
+        @prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
 	end
 
 	def index
