@@ -4,8 +4,7 @@
 			<h3><%= @owner.name %>の情報</h3>
 		</div>
 		<div class="col-xs-3 text-center space">
-		    <h6><%= link_to "オーナー情報の編集" , edit_admins_owner_path , class:"text-right" %>
-		    </h6>
+	    <h6><%= link_to "オーナー情報の編集" , edit_admins_owner_path , class:"text-right" %></h6>
 		</div>
 	</div>
 	<div class="row">
@@ -34,16 +33,16 @@
 				</thead>
 				<tbody>
 					<% @shops.each do  |shop| %>
-					    <tr>
-						    <td><%= link_to shop.shop_name , admins_shop_path(shop) %>
-						    </td>
-						    <td><% if shop.is_active == true %>
-					                有効
-					            <% else  %>
-					                無効
-					            <% end %>
-					        </td>
-					    </tr>
+				    <tr>
+					    <td><%= link_to shop.shop_name , admins_shop_path(shop) %>
+					    </td>
+					    <td><% if shop.is_active == true %>
+				          有効
+				          <% else  %>
+				          無効
+				          <% end %>
+				        </td>
+				    </tr>
 					<% end %>
 				</tbody>
 			</table>

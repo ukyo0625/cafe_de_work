@@ -131,16 +131,24 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-xs-4 space text-right">
+                            <%= t.label :備考 %>
+                        </div>
+                        <div class="col-xs-8 space">
+                        <%= t.text_field :remarks , class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-xs-5 text-right space">
                             <%= t.label '最寄駅（複数選択可）'%>
                         </div>
                     </div>
                     <%= t.fields_for :stations do |station_f| %>
                         <div class="row">
-                            <div class="col-xs-2 col-xs-offset-4 space">
+                            <div class="col-xs-2 col-xs-offset-3 space">
                                 <%= station_f.select(:prefecture, options_for_select(@prefecture_options), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select"})  %>
                             </div>
-                            <div class="col-xs-2 space">
+                            <div class="col-xs-3 space">
                                 <%= station_f.select(:line, options_for_select([]) , {include_blank:'路　　線　　'}, {id: 'line', class:"js_line_select"}) %>
                             </div>
                             <div class="col-xs-2 space">

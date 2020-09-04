@@ -12,18 +12,17 @@
   <body>
     <header>
       <div class="container-fluid" style="border-bottom: 1px solid black;" >
-        <nav class='nav navbar-nav navbar-left'>
-          <h1>Cafe De Work</h1>
+        <nav class='nav navbar-nav navbar-center'>
+          <img src="/assets/TNbbC6Rif8GRwV21599124279_1599124307.png" alt=""><!-- ロゴ -->
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <% if admin_signed_in? %>
+            <% if admin_signed_in? %><!-- アドミンがログインした場合のヘッダー -->
             <li class="nav-list-item"><%= link_to 'トップページ', admins_top_path %></li>
             　<li class="nav-list-item"><%= link_to 'オーナー一覧', admins_owners_path %></li>
             <li class="nav-list-item"><%= link_to 'ショップ検索', search_admins_shops_path %></li>
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-            <% elsif owner_signed_in? %>
-
+            <% elsif owner_signed_in? %><!-- オーナーがログインした場合のヘッダー -->
             <li class="nav-list-item"><h5>ようこそ、<%= current_owner.name %>さん！</h5></li>
               <li class="nav-list-item"><%= link_to '投稿ページ', new_owners_shop_path %></li>
               <li class="nav-list-item"><%= link_to '一覧', owners_shops_path %></li>
@@ -31,7 +30,7 @@
               <li class="nav-list-item"><%= link_to 'ログアウト', destroy_owner_session_path, method: :delete %>
               <li class="nav-list-item"><%= link_to '退会', owners_confirm_path %></li>
               </li>
-            <% else %>
+            <% else %><!-- ビジッターがヘッダー -->
             　<li class="nav-list-item"><%= link_to 'TOPページ', root_path %></li>
             　<li class="nav-list-item"><%= link_to '検索', shops_search_path %></li>
             　<li class="nav-list-item"><%= link_to 'ログイン',new_owner_session_path %></li>
@@ -41,13 +40,11 @@
         </nav>
       </div>
     </header>
-
     <%= yield %>
-
     <footer>
       <div class="container-fluid" style="border-top: 1px solid black;">
         <div class="footer-copyright">
-          <p>©copyright ukyo.kobayashi All Rights Reserved.</p>
+          <p>©copyright ukyo.kobayashi All Rights Reserved.</p><!-- コピーライト -->
         </div>
       </div>
     </footer>

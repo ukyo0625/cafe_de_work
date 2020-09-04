@@ -61,7 +61,8 @@ shop_1 = Shop.create!(
 	phone_number: "0300000000",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/milivoj-kuhar-Te48TPzdcU8-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/milivoj-kuhar-Te48TPzdcU8-unsplash.jpg"),
+	remarks: "第二水曜日も定休日です。"
 )
 ShopTag.create!(shop_id: shop_1.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_1.id, tag_id: tag_2.id)
@@ -81,7 +82,8 @@ shop_2 = Shop.create!(
 	phone_number: "0300000001",
 	is_favorite: true,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/clifford-VobvKmG-StA-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/clifford-VobvKmG-StA-unsplash.jpg"),
+	remarks: "第二水曜日も定休日です。"
 )
 ShopTag.create!(shop_id: shop_2.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_2.id, tag_id: tag_2.id)
@@ -102,7 +104,8 @@ shop_3 = Shop.create!(
 	phone_number: "0300000002",
 	is_favorite: true,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/cyril-saulnier-mpSMThAU4OY-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/cyril-saulnier-mpSMThAU4OY-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_3.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_3.id, tag_id: tag_2.id)
@@ -123,7 +126,8 @@ shop_4 = Shop.create!(
 	phone_number: "0300000003",
 	is_favorite: true,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/drew-coffman-jUOaONoXJQk-unsplash (3).jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/zahir-namane-0qF1JTmDLBY-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_4.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_4.id, tag_id: tag_2.id)
@@ -144,7 +148,8 @@ shop_5 = Shop.create!(
 	phone_number: "0300000004",
 	is_favorite: true,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/kaylah-matthews-6e5hgWV2DAo-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/kaylah-matthews-6e5hgWV2DAo-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_5.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_5.id, tag_id: tag_3.id)
@@ -165,7 +170,8 @@ shop_6 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_6.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_6.id, tag_id: tag_2.id)
@@ -188,7 +194,8 @@ shop_7 = Shop.create!(
 	phone_number: "0300000006",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/nathan-dumlao-nBJHO6wmRWw-unsplash (1).jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/nathan-dumlao-nBJHO6wmRWw-unsplash (1).jpg"),
+	remarks: "日曜日のみ深夜０時まで営業しています。"
 )
 ShopTag.create!(shop_id: shop_7.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_7.id, tag_id: tag_2.id)
@@ -211,7 +218,8 @@ shop_8 = Shop.create!(
 	phone_number: "0300000007",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/nathan-dumlao-tA90pRfL2gM-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/nathan-dumlao-tA90pRfL2gM-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_8.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_8.id, tag_id: tag_7.id)
@@ -231,7 +239,8 @@ shop_9 = Shop.create!(
 	phone_number: "0300000008",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/nathan-dumlao-zUNs99PGDg0-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/spencer-davis-LXKBzkKN9ZA-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_9.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_9.id, tag_id: tag_7.id)
@@ -251,7 +260,8 @@ shop_10 = Shop.create!(
 	phone_number: "0300000009",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/olga-popovych-QpG2YvaGytM-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/olga-popovych-QpG2YvaGytM-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_10.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_10.id, tag_id: tag_7.id)
@@ -271,7 +281,8 @@ shop_11 = Shop.create!(
 	phone_number: "0300000010",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/samuel-cesar-IbTl5197EOo-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/samuel-cesar-IbTl5197EOo-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_11.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_11.id, tag_id: tag_7.id)
@@ -292,7 +303,8 @@ shop_12 = Shop.create!(
 	phone_number: "0300000011",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/toa-heftiba-W6sqUYlJRiw-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/toa-heftiba-W6sqUYlJRiw-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_12.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_12.id, tag_id: tag_2.id)
@@ -313,7 +325,8 @@ shop_13 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/daniele-riggi-OTTfvhpbeTU-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_13.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_13.id, tag_id: tag_2.id)
@@ -336,7 +349,8 @@ shop_14 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/igor-starkov-8PW9y8XQTFg-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_14.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_14.id, tag_id: tag_2.id)
@@ -359,7 +373,8 @@ shop_15 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/lukas-fitria-adi-setiawan-5mWym7qiFdw-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_15.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_15.id, tag_id: tag_2.id)
@@ -369,7 +384,7 @@ ShopTag.create!(shop_id: shop_15.id, tag_id: tag_7.id)
 Holiday.create!(shop_id: shop_15.id, holiday_number: 6)
 Station.create!(shop_id: shop_15.id, prefecture: "04000" , line: "04100" , station_name: "千葉駅" )
 Station.create!(shop_id: shop_15.id, prefecture: "04000" , line: "04100" , station_name: "西千葉駅" )
-Station.create!(shop_id: shop_5.id, prefecture: "" , line: "" , station_name: "" )
+Station.create!(shop_id: shop_15.id, prefecture: "" , line: "" , station_name: "" )
 
 shop_16 = Shop.create!(
 	owner_id: owner_3.id,
@@ -382,7 +397,8 @@ shop_16 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/quaid-lagan-jA9a1yepfEk-unsplash.jpgg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_16.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_16.id, tag_id: tag_2.id)
@@ -405,7 +421,8 @@ shop_17 = Shop.create!(
 	phone_number: "0300000004",
 	is_favorite: true,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/kaylah-matthews-6e5hgWV2DAo-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/kaylah-matthews-6e5hgWV2DAo-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_17.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_17.id, tag_id: tag_3.id)
@@ -426,7 +443,8 @@ shop_18 = Shop.create!(
 	phone_number: "0300000002",
 	is_favorite: true,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/cyril-saulnier-mpSMThAU4OY-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/cyril-saulnier-mpSMThAU4OY-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_18.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_18.id, tag_id: tag_2.id)
@@ -447,7 +465,8 @@ shop_19 = Shop.create!(
 	phone_number: "0300000003",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/drew-coffman-jUOaONoXJQk-unsplash (3).jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/drew-coffman-jUOaONoXJQk-unsplash (3).jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_19.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_19.id, tag_id: tag_2.id)
@@ -468,7 +487,8 @@ shop_20 = Shop.create!(
 	phone_number: "0300000000",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/milivoj-kuhar-Te48TPzdcU8-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/tony-lee-8IKf54pc3qk-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_20.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_20.id, tag_id: tag_2.id)
@@ -488,7 +508,8 @@ shop_21 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/michal-parzuchowski-ItaV89TNkks-unsplash.jpg")
+	shop_image: open("#{Rails.root}/db/seeds/images/the-creative-exchange-d1ngW7SNehM-unsplash.jpg"),
+	remarks: ""
 )
 ShopTag.create!(shop_id: shop_21.id, tag_id: tag_1.id)
 ShopTag.create!(shop_id: shop_21.id, tag_id: tag_2.id)

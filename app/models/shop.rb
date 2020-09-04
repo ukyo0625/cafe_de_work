@@ -18,6 +18,7 @@ class Shop < ApplicationRecord
 	validates :close_time, numericality: true
 	validates :phone_number,presence: true
 	validates :phone_number, numericality: true
+	validates :remarks,    length: { in: 0..30 }
 
 
 end

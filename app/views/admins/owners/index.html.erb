@@ -5,22 +5,21 @@
 			<h3>オーナー検索画面</h3>
 		</div>
 	</div>
-    <%= search_form_for(@q, url: admins_owners_path)  do |f| %>
-    	<div class="row">
+  <%= search_form_for(@q, url: admins_owners_path)  do |f| %>
+    <div class="row">
 			<div class="col-xs-6  col-xs-offset-3 text-center">
-                <%= f.label :name, "オーナー名を入力してください" %>
-            </div>
-        </div>
-        <div class="row">
+        <%= f.label :name, "オーナー名を入力してください" %>
+      </div>
+    </div>
+    <div class="row">
 			<div class="col-xs-2  col-xs-offset-5 space">
-	            <%= f.search_field :name_cont %>
-	        </div>
+        <%= f.search_field :name_cont %>
+      </div>
 			<div class="col-xs-1">
 				<%= f.submit '検索' %>
 			</div>
 		</div>
-    <% end %>
-
+  <% end %>
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 text-center space">
 			<table class="table table-bordered">
@@ -33,9 +32,7 @@
 				<tbody>
 					<% @owners.each do  |owner| %>
 						<tr>
-							<td>
-							    <%= link_to owner.name ,admins_owner_path(owner) %>
-							</td>
+							<td><%= link_to owner.name ,admins_owner_path(owner) %></td>
 							<td>
 								<%= owner.email %>
 							</td>
@@ -44,9 +41,9 @@
 				</tbody>
 			</table>
 			<div class="row">
-		        <div class="col-xs-4 col-xs-offset-4">
-			        <%= paginate @owners %>
-			    </div>
+        <div class="col-xs-4 col-xs-offset-4">
+	        <%= paginate @owners %>
+	      </div>
 			</div>
 		</div>
 	</div>

@@ -15,16 +15,14 @@
 				</thead>
 				<tbody>
 					<% @shop_favorite_odd.each do |shop| %>
-  				 	    <tr>
-				 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
-				            </td>
-				            <td>
-				            	<h4><%= link_to shop.shop_name ,admins_shop_path(shop.id)  %>
-				            	</h4>
-				            	<p><%= shop.shop_detail %>
-				            	</p>
-				            </td>
-				        </tr>
+			 	    <tr>
+			 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
+			        </td>
+			        <td>
+			          <h4><%= link_to shop.shop_name ,admins_shop_path(shop.id)  %></h4>
+			          <p><%= shop.shop_detail %></p>
+			        </td>
+		        </tr>
 					<% end %>
 				</tbody>
 			</table>
@@ -39,16 +37,14 @@
 				</thead>
 				<tbody>
 					<% @shop_favorite_even.each do |shop| %>
-  				 	    <tr>
-				 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
-				            </td>
-				            <td>
-				            	<h4><%= link_to shop.shop_name ,admins_shop_path(shop.id)  %>
-				            	</h4>
-				            	<p><%= shop.shop_detail %>
-				            	</p>
-				            </td>
-				        </tr>
+			 	    <tr>
+			 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
+	            </td>
+	            <td>
+		            <h4><%= link_to shop.shop_name ,admins_shop_path(shop.id)  %></h4>
+		            <p><%= shop.shop_detail %></p>
+		          </td>
+		        </tr>
 					<% end %>
 				</tbody>
 			</table>

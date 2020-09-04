@@ -1,84 +1,84 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-4 col-xs-offset-4 text-center space">
-            <h3>検索画面</h3>
-        </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4 text-center space">
+        <h3>検索画面</h3>
     </div>
-    <%= search_form_for @q , { url: admins_shops_path} do |f| %>
+  </div>
+  <%= search_form_for @q , { url: admins_shops_path} do |f| %>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-3 text-center">
+        <%= f.label :name, "キーワード検索" %>
+      </div>
+      <div class="col-xs-4 space text-center">
+        <%= f.search_field :shop_name_or_shop_detail_cont , class:"form-control" %>
+      </div>
+    </div>
+   <div class="row">
+      <div class="col-xs-2  col-xs-offset-3 text-center space">
+        <%= f.label :来店日 %>
+      </div>
+      <div class="col-xs-5 text-left">
+        <ul class="holiday_list">
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 0 %>日曜
+          </li>
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 1 %>月曜
+          </li>
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 2 %>火曜
+          </li>
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 3 %>水曜
+          </li>
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 4 %>木曜
+          </li>
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 5 %>金曜
+          </li>
+          <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 6 %>土曜
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2  col-xs-offset-3 text-center">
+        <%= f.label :タグ %>
+      </div>
+      <div class="col-xs-5 space">
+        <% Tag.all.each_slice(3) do |tags| %>
+          <ul class="tags_list">
+            <% tags.each do |tag| %>
+              <li>
+                <%= f.check_box :shop_tags_tag_id_in_any, {multiple: true, include_hidden: false } , tag.id %>
+                <%= tag.name %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 text-center space">
         <div class="row">
-            <div class="col-xs-2 col-xs-offset-3 text-center">
-                <%= f.label :name, "キーワード検索" %>
-            </div>
-            <div class="col-xs-4 space text-center">
-                <%= f.search_field :shop_name_or_shop_detail_cont , class:"form-control" %>
-            </div>
-        </div>
-         <div class="row">
-            <div class="col-xs-2  col-xs-offset-3 text-center space">
-                <%= f.label :来店日 %>
-            </div>
-            <div class="col-xs-5 text-left">
-                <ul class="holiday_list">
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 0 %>日曜
-                    </li>
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 1 %>月曜
-                    </li>
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 2 %>火曜
-                    </li>
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 3 %>水曜
-                    </li>
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 4 %>木曜
-                    </li>
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 5 %>金曜
-                    </li>
-                    <li><%= f.check_box :holidays_holiday_number_not_in, {multiple: true, include_hidden: false } , 6 %>土曜
-                    </li>
-                </ul>
-            </div>
+          <div class="col-xs-6 text-center space">
+            <%= f.label :最寄駅 %>
+          </div>
         </div>
         <div class="row">
-            <div class="col-xs-2  col-xs-offset-3 text-center">
-                <%= f.label :タグ %>
-            </div>
-            <div class="col-xs-5 space">
-                <% Tag.all.each_slice(3) do |tags| %>
-                    <ul class="tags_list">
-                        <% tags.each do |tag| %>
-                            <li>
-                                <%= f.check_box :shop_tags_tag_id_in_any, {multiple: true, include_hidden: false } , tag.id %>
-                                <%= tag.name %>
-                            </li>
-                        <% end %>
-                    </ul>
-                <% end %>
-            </div>
+          <div class="col-xs-2 col-xs-offset-3 text-left space">
+              <%= select_tag(:prefecture,options_for_select(@prefecture_options), {include_blank:'都道府県', id: 'pref', class: "js_pref_select"})  %>
+          </div>
+          <div class="col-xs-3 text-center space">
+              <%= select_tag(:line, options_for_select([]) , {include_blank:'〜　　路　線　　〜',id: 'line', class:"js_line_select"}) %>
+          </div>
+          <div class="col-xs-3 text-center space">
+            <%= f.select(:stations_station_name_cont,options_for_select([]),{include_blank:'〜　　駅　名　　〜'}, {class:"js_station_select"}) %>
+          </div>
         </div>
         <div class="row">
-            <div class="col-xs-8 col-xs-offset-2 text-center space">
-                <div class="row">
-                    <div class="col-xs-6 text-center space">
-                        <%= f.label :最寄駅 %>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-2 col-xs-offset-3 text-left space">
-                        <%= select_tag(:prefecture,options_for_select(@prefecture_options), {include_blank:'都道府県', id: 'pref', class: "js_pref_select"})  %>
-                    </div>
-                    <div class="col-xs-3 text-center space">
-                        <%= select_tag(:line, options_for_select([]) , {include_blank:'〜　　路　線　　〜',id: 'line', class:"js_line_select"}) %>
-                    </div>
-                    <div class="col-xs-3 text-center space">
-                        <%= f.select(:stations_station_name_cont,options_for_select([]),{include_blank:'〜　　駅　名　　〜'}, {class:"js_station_select"}) %>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="action col-xs-4 col-xs-offset-4 text-center">
-                        <%= f.submit "検索する" , class:"btn btn-primary" %>
-                    </div>
-                </div>
-            </div>
+          <div class="action col-xs-4 col-xs-offset-4 text-center">
+              <%= f.submit "検索する" , class:"btn btn-primary" %>
+          </div>
         </div>
-    <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

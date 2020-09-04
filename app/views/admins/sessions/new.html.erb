@@ -5,7 +5,6 @@
     </div>
   </div>
   <div class="col-xs-6 col-xs-offset-3">
-
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <div class="col-xs-5 space text-right">
@@ -15,7 +14,6 @@
          <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control" %>
         </div>
       </div>
-
       <div class="field">
         <div class="col-xs-5 space text-right">
           <%= f.label :　パスワード %>
@@ -25,7 +23,6 @@
         </div>
       </div>
       <div class="col-xs-6 col-xs-offset-3">
-
         <div class="actions">
           <%= f.submit "ログイン" , class:"btn btn-primary"  %>
         </div>

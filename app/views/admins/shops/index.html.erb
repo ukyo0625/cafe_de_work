@@ -5,13 +5,13 @@
 		</div>
 	</div>
 	<% if @shops.empty? %>
-	    <div class="col-xs-8 col-xs-offset-2 text-center">
-	        <h4>申し訳ございません<br>
-	        	一致するカフェは投稿されていません
-	        </h4>
-	    </div>
+    <div class="col-xs-8 col-xs-offset-2 text-center">
+      <h4>申し訳ございません<br>
+      	一致するカフェは投稿されていません
+      </h4>
+    </div>
 	<% else %>
-	    <div class="row">
+	  <div class="row">
 			<div class="col-xs-10 col-xs-offset-1 space">
 				<table class="table index_table">
 					<thead>
@@ -23,7 +23,7 @@
 					</thead>
 					<tbody>
 						<% @shops.each do  |shop| %>
-						    <tr>
+					    <tr>
 								<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
 								</td>
 								<td><%= link_to shop.shop_name , admins_shop_path(shop) %><br>
@@ -34,10 +34,10 @@
 										<span class="label label-success">
 										  	<%= tag.tag.name %>
 										</span>,
-								    <% end %><br>
-								    <%= shop.address %>
+								  <% end %><br>
+								  <%= shop.address %>
 								</td>
-							</tr>
+						  </tr>
 						<% end %>
 					</tbody>
 				</table>
@@ -46,5 +46,5 @@
 	<% end %>
 </div>
 <div class="col-xs-4 col-xs-offset-4 text-center">
-    <%= paginate @shops %>
+  <%= paginate @shops %>
 </div>
