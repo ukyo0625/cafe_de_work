@@ -397,7 +397,7 @@ shop_16 = Shop.create!(
 	phone_number: "0300000005",
 	is_favorite: false,
 	is_active: true,
-	shop_image: open("#{Rails.root}/db/seeds/images/quaid-lagan-jA9a1yepfEk-unsplash.jpgg"),
+	shop_image: open("#{Rails.root}/db/seeds/images/quaid-lagan-jA9a1yepfEk-unsplash.jpg"),
 	remarks: ""
 )
 ShopTag.create!(shop_id: shop_16.id, tag_id: tag_1.id)
