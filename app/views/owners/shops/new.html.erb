@@ -146,13 +146,13 @@
                     <%= t.fields_for :stations do |station_f| %>
                         <div class="row">
                             <div class="col-xs-2 col-xs-offset-3 space">
-                                <%= station_f.select(:prefecture, options_for_select(@prefecture_options), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select"})  %>
+                                <%= station_f.select(:prefecture, options_for_select(@prefecture_options), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select select_box_set"})  %>
                             </div>
                             <div class="col-xs-3 space">
-                                <%= station_f.select(:line, options_for_select([]) , {include_blank:'路　　線　　'}, {id: 'line', class:"js_line_select"}) %>
+                                <%= station_f.select(:line, options_for_select([]) , {include_blank:'路　線'}, {id: 'line', class:"js_line_select select_box_set"}) %>
                             </div>
                             <div class="col-xs-2 space">
-                                <%= station_f.select(:station_name, options_for_select([]) ,{include_blank:'駅　　名　　'},{ class:"js_station_select"}) %>
+                                <%= station_f.select(:station_name, options_for_select([]) ,{include_blank:'駅　　名　　'},{ class:"js_station_select select_box_set"}) %>
                             </div>
                         </div>
                     <% end %>
