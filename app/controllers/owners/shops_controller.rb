@@ -54,16 +54,16 @@ class Owners::ShopsController < ApplicationController
 		@shop.holidays = []
 		@shop.shop_tags.destroy_all
 		unless holiday_tag_params[:holiday].blank?
-			  holiday_tag_params[:holiday].each do |holiday_number|
-			    @shop.holidays.build(holiday_number: holiday_number)
-		    end
+		  holiday_tag_params[:holiday].each do |holiday_number|
+		    @shop.holidays.build(holiday_number: holiday_number)
 	    end
-	    unless holiday_tag_params[:tag].blank?
-	      holiday_tag_params[:tag].each do |tag_id|
-		      @shop.shop_tags.build(tag_id: tag_id)
-		    end
+	  end
+    unless holiday_tag_params[:tag].blank?
+      holiday_tag_params[:tag].each do |tag_id|
+	      @shop.shop_tags.build(tag_id: tag_id)
 	    end
-	    @shop.stations.delete_all
+    end
+    @shop.stations.delete_all
 		if @shop.update(shop_params)
 		  redirect_to owners_shop_path(@shop.id)
 		else

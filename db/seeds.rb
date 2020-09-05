@@ -156,7 +156,7 @@ ShopTag.create!(shop_id: shop_5.id, tag_id: tag_3.id)
 ShopTag.create!(shop_id: shop_5.id, tag_id: tag_7.id)
 Holiday.create!(shop_id: shop_5.id, holiday_number: 6)
 Station.create!(shop_id: shop_5.id, prefecture: "02000" , line: "02100" , station_name: "大宮駅" )
-Station.create!(shop_id: shop_5.id, prefecture: "02000" , line: "02100" , station_name: "大宮駅" )
+Station.create!(shop_id: shop_5.id, prefecture: "" , line: "" , station_name: "" )
 Station.create!(shop_id: shop_5.id, prefecture: "" , line: "" , station_name: "" )
 
 shop_6 = Shop.create!(
