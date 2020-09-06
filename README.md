@@ -57,13 +57,16 @@ Puma
 # 設計書
 テーブル定義書
 https://docs.google.com/spreadsheets/d/1xTPNZnf_cXJCmb4gEI0XSY_cM1c4hJ1714wuorlew2w/edit#gid=177983633
+
 AWS構成図
 https://drive.google.com/file/d/1T2pyUVNjYSdrtLlv6INyz0r-rHJdlTAH/view?usp=sharing
+
 AWSインフラ設計書
 https://docs.google.com/spreadsheets/d/1aIaSw3ot92_09hd_bW6mBjVu4t90nYoiFGo6ifzoqAM/edit#gid=0
 
 
 # 機能一覧
+スプレッドシート
 https://docs.google.com/spreadsheets/d/13T9A7q0XNAp8GbukGSXjd1xb0HE5mgbsApr3USIzfsY/edit?usp=sharing
 
 #管理者機能
