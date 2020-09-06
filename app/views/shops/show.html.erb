@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 space">
+    <div class="col-xs-6 col-xs-offset-3 space text-center">
       <h3><%= @shop.shop_name %>の情報</h3>
     </div>
   </div>
@@ -13,7 +13,7 @@
               <%= attachment_image_tag @shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_show_img" %>
             </th>
             <td class="td_show">
-              <%= @shop.shop_detail %></td>
+              <p><%= simple_format(@shop.shop_detail) %></p></td>
           </tr>
           <tr>
             <th>住所</th>
@@ -33,7 +33,8 @@
           </tr>
           <tr>
             <th>営業時間</th>
-            <td><%= @shop.open_time %>時〜<%= @shop.close_time %>時</td>
+            <td><%= @shop.open_time_hour %>時<%= ('0' +@shop.open_time_minute.to_s).slice(-2,2) %>分〜
+                <%= @shop.close_time_hour %>時<%= @shop.close_time_minute %>分</td>
           </tr>
           <tr>
             <th>定休日</th>

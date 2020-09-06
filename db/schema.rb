@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_081020) do
+ActiveRecord::Schema.define(version: 2020_09_06_060801) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2020_09_03_081020) do
     t.integer "owner_id", null: false
     t.string "address", null: false
     t.integer "seat", null: false
-    t.string "open_time", null: false
-    t.string "close_time", null: false
+    t.integer "open_time_hour", null: false
+    t.integer "close_time_hour", null: false
     t.string "phone_number", null: false
     t.boolean "is_favorite", default: false, null: false
     t.boolean "is_active", default: true, null: false
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_09_03_081020) do
     t.datetime "updated_at", null: false
     t.string "shop_image_id"
     t.text "remarks"
+    t.integer "open_time_minute", null: false
+    t.integer "close_time_minute", null: false
   end
 
   create_table "stations", force: :cascade do |t|

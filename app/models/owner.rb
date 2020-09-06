@@ -4,4 +4,8 @@ class Owner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name,presence: true
+  has_many :shops, :dependent => :destroy
+
+  scope :actived, -> {where(is_actived: true)}
+  #shopモデルで使用
 end

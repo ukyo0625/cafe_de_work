@@ -5,199 +5,223 @@
 		</div>
 	</div>
   <div class="row">
-    <div class="col-xs-1 col-xs-offset-9 space">
-        <%= link_to "戻る" , admins_shop_path %>
+    <div class="col-xs-1 col-xs-offset-8 space">
+      <%= link_to "戻る" , admins_shop_path %>
     </div>
   </div>
   <% if @shop.errors.any? %>
-     <h3>error</h3>
-     <% @shop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+    <h3>error</h3>
+    <% @shop.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   <% end %>
 	<%= form_for(@shop, url: admins_shop_path) do |f| %>
-	    <div class="row">
-		    <div class="col-xs-8 col-xs-offset-2">
-		    	<div class="field">
-            <div class="row">
-              <div class="col-xs-4 space text-right">
-                <%= f.label :トップページに表示 %>
-              </div>
-              <div class="col-xs-1">
-                <%= f.radio_button :is_favorite, :true , class:"form-control" %>
-              </div>
-              <div class="col-xs-2">
-                <p class="text_size">表示</p>
-              </div>
-              <div class="col-xs-1">
-                <%= f.radio_button :is_favorite, :false , class:"form-control" %>
-              </div>
-              <div class="col-xs-2">
-                <p class="text_size">非表示</p>
-              </div>
-            </div>
-          </div>
-		    	<div class="row">
-            <div class="col-xs-4 space text-right">
-            	<%= f.label :ショップ名 %>
-            </div>
-            <div class="col-xs-8 space">
-            	<%= f.text_field :shop_name , class:"form-control" %>
-            </div>
-          </div>
+    <div class="row">
+	    <div class="col-xs-10 col-xs-offset-1">
+	    	<div class="field">
           <div class="row">
             <div class="col-xs-4 space text-right">
-            	<%= f.label :　ショップ詳細 %>
+              <%= f.label :トップページに表示 %>
+            </div>
+            <div class="col-xs-1">
+              <%= f.radio_button :is_favorite, :true , class:"form-control" %>
+            </div>
+            <div class="col-xs-2">
+              <p class="text_size">表示</p>
+            </div>
+            <div class="col-xs-1">
+              <%= f.radio_button :is_favorite, :false , class:"form-control" %>
+            </div>
+            <div class="col-xs-2">
+              <p class="text_size">非表示</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-10 col-xs-offset-2">
-            	<%= f.text_area :shop_detail , class:"form-control space" %>
-            </div>
+        </div>
+	    	<div class="row">
+          <div class="col-xs-4 space text-right">
+          	<%= f.label :ショップ名 %>
           </div>
-          <div class="row">
-            <div class="col-xs-4 space text-right">
-            	<%= f.label :住所 %>
-            </div>
-            <div class="col-xs-8">
-            	<%= f.text_field :address , class:"form-control space" %>
-            </div>
+          <div class="col-xs-5 space">
+          	<%= f.text_field :shop_name , class:"form-control" %>
           </div>
-            <div class="row">
-              <div class="col-xs-4 text-right space">
-              	<%= f.label :席数（半角） %>
-              </div>
-              <div class="col-xs-2">
-              	<%= f.text_field :seat , class:"form-control" %>
-              </div>
-              <div class="col-xs-1">
-              	<p class="text_size">席</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4 text-right space">
-              	<%= f.label :営業時間（半角） %>
-              </div>
-              <div class="col-xs-2">
-              	<%= f.text_field :open_time , class:"form-control" %>
-              </div>
-              <div class="col-xs-1">
-              	<p class="text_size">時〜</p>
-              </div>
-              <div class="col-xs-2">
-              	<%= f.text_field :close_time , class:"form-control" %>
-              </div>
-              <div class="col-xs-1">
-              	<p class="text_size">時</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4 text-right">
-              	<%= f.label :電話番号 %>
-              </div>
-              <div class="col-xs-3">
-              	<%= f.text_field :phone_number , class:"form-control space" %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4 text-right space">
-              	<%= f.label :イメージ画像 %>
-              </div>
-              <div class="col-xs-3">
-              	<%= f.attachment_field :shop_image , class:"space" %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4 text-right space">
-                <%= f.label :　　定休日, {class: 'pull-center'} %>
-              </div>
-              <div class="col-xs-8">
-                <ul class="edit_list pull-left">
-                  <% ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"].each_with_index do |holiday,i| %>
-                    <% if @holidays_select.include?(i) %>
-                      <li><%= f.check_box :holiday,{ multiple: true, checked: true },i, nil %>
-                          <span><%= holiday %>　</span>
-                      </li>
-                    <% else %>
-                      <li><%= f.check_box :holiday,{ multiple: true, checked: false },i, nil %>
-                          <span><%= holiday %>　</span>
-                      </li>
-                    <% end%>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4 text-right space">
-                <%= f.label :　　タグ, {class: 'pull-center'} %>
-              </div>
-              <div class="col-xs-8 space">
-                <ul class="edit_list tags">
-                  <% @tags.each do |tag,i| %>
-                    <% if @tags_select.include?(tag.id) %>
-                      <div>
-                        <li><%= f.check_box :tag,{ multiple: true, checked: true }, tag.id, nil %>
-                            <span><%= tag.name %>　</span>
-                        </li>
-                      </div>
-                    <% else %>
-                      <div>
-                        <li><%= f.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
-                            <span><%= tag.name %>　</span>
-                        </li>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </ul>
-              </div>
-              <div class="row">
-                <div class="col-xs-4 space text-right">
-                  <%= f.label :備考 %>
-                </div>
-                <div class="col-xs-8 space">
-                  <%= f.text_field :remarks , class:"form-control" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-5 col-xs-offset-1 text-center space">
-                    <%= f.label :最寄駅（複数選択可）　　%>
-                </div>
-              </div>
-              <%= f.fields_for :stations do |station_f| %>
-                <div class="row">
-                  <div class="col-xs-2 col-xs-offset-3 space">
-                    <%= station_f.select(:prefecture, options_for_select(@prefecture_options,selected: station_f.object.prefecture), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select"})  %>
-                  </div>
-                  <div class="col-xs-3 space">
-                    <%= station_f.select(:line, options_for_select(line_option(station_f.object.prefecture).to_a, selected: station_f.object.line) , {include_blank:'〜　　路　線　　〜'}, {id: 'line', class:"js_line_select"}) %>
-                  </div>
-                  <div class="col-xs-2 space">
-                    <%= station_f.select(:station_name, options_for_select(station_option(station_f.object.line).to_a, selected: station_f.object.station_name) ,{include_blank:'〜　　駅　名　　〜'},{ class:"js_station_select"}) %>
-                  </div>
-                </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 space text-right">
+          	<%= f.label :ショップ詳細 %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-3">
+          	<%= f.text_area :shop_detail , class:"form-control space" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 space text-right">
+          	<%= f.label :住所 %>
+          </div>
+          <div class="col-xs-5">
+          	<%= f.text_field :address , class:"form-control space" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 text-right space col-xs-offset-1">
+          	<%= f.label :席数（半角）　　 %>
+          </div>
+          <div class="col-xs-2">
+          	<%= f.text_field :seat , class:"form-control" %>
+          </div>
+          <div class="col-xs-1">
+          	<p class="text_size">席</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-2 text-right space">
+            <%= f.label :営業時間（半角） %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-2">
+            <p class="text_size text-right">開店時間</p>
+          </div>
+          <div class="col-xs-2">
+            <%= f.text_field :open_time_hour , class:"form-control" %>
+          </div>
+          <div class="col-xs-1">
+            <p class="text_size">時</p>
+          </div>
+          <div class="col-xs-2">
+            <%= f.text_field :open_time_minute , class:"form-control" %>
+          </div>
+          <div class="col-xs-1">
+            <p class="text_size">分　〜</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-2">
+            <p class="text_size text-right">閉店時間</p>
+          </div>
+          <div class="col-xs-2">
+            <%= f.text_field :close_time_hour , class:"form-control" %>
+          </div>
+          <div class="col-xs-1">
+            <p class="text_size">時</p>
+          </div>
+          <div class="col-xs-2">
+            <%= f.text_field :close_time_minute , class:"form-control" %>
+          </div>
+          <div class="col-xs-1">
+            <p class="text_size">分</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 text-right">
+          	<%= f.label :電話番号 %>
+          </div>
+          <div class="col-xs-3">
+          	<%= f.text_field :phone_number , class:"form-control space" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 text-right space">
+          	<%= f.label :イメージ画像 %>
+          </div>
+          <div class="col-xs-3">
+          	<%= f.attachment_field :shop_image , class:"space" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 text-right space">
+            <%= f.label :定休日 %>
+          </div>
+          <div class="col-xs-8">
+            <ul class="edit_list pull-left">
+              <% ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"].each_with_index do |holiday,i| %>
+                <% if @holidays_select.include?(i) %>
+                  <li><%= f.check_box :holiday,{ multiple: true, checked: true },i, nil %>
+                      <span><%= holiday %>　</span>
+                  </li>
+                <% else %>
+                  <li><%= f.check_box :holiday,{ multiple: true, checked: false },i, nil %>
+                      <span><%= holiday %>　</span>
+                  </li>
+                <% end%>
               <% end %>
-              <div class="row">
-                <div class="col-xs-4 text-right space">
-                	<%= f.label :　　有効・無効 %>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-1 text-right space">
+            <%= f.label :タグ %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-9 col-xs-offset-3 space">
+            <ul class="edit_list tags">
+              <% @tags.each do |tag,i| %>
+                <% if @tags_select.include?(tag.id) %>
+                  <div>
+                    <li><%= f.check_box :tag,{ multiple: true, checked: true }, tag.id, nil %>
+                      <span><%= tag.name %>　</span>
+                    </li>
+                  </div>
+                <% else %>
+                  <div>
+                    <li><%= f.check_box :tag,{ multiple: true, checked: false }, tag.id, nil %>
+                      <span><%= tag.name %>　</span>
+                    </li>
+                  </div>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 space text-right">
+              <%= f.label :備考 %>
+            </div>
+            <div class="col-xs-6 space">
+              <%= f.text_area :remarks , class:"form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5 col-xs-offset-1 text-center space">
+                <%= f.label :最寄駅（複数選択可）　　%>
+            </div>
+          </div>
+          <%= f.fields_for :stations do |station_f| %>
+            <div class="row">
+              <div class="under_select_box">
+                <div class="col-md-2 col-md-offset-3 space parent">
+                  <%= station_f.select(:prefecture, options_for_select(@prefecture_options,selected: station_f.object.prefecture), { include_blank:'都道府県' }, { id: 'pref', class: "js_pref_select select_box_set under_station"})  %>
                 </div>
-                <div class="col-xs-1">
-                	<%= f.radio_button :is_active, :true , class:"form-control" %>
+                <div class="col-md-3 space parent">
+                  <%= station_f.select(:line, options_for_select(line_option(station_f.object.prefecture).to_a, selected: station_f.object.line) , {include_blank:'路　　線'}, {id: 'line', class:"js_line_select select_box_set under_station"}) %>
                 </div>
-                <div class="col-xs-2">
-                	<p class="text_size">有効</p>
-                </div>
-                <div class="col-xs-1">
-                	<%= f.radio_button :is_active, :false , class:"form-control" %>
-                </div>
-                 <div class="col-xs-2">
-                	<p class="text_size">無効</p>
+                <div class="col-md-2 space parent">
+                  <%= station_f.select(:station_name, options_for_select(station_option(station_f.object.line).to_a, selected: station_f.object.station_name) ,{include_blank:'駅　　名'},{ class:"js_station_select select_box_set under_station"}) %>
                 </div>
               </div>
-              <div class="row">
-                <div class="action col-xs-4 col-xs-offset-4 text-center">
-                	<%= f.submit "編集内容を保存する" , class:"btn btn-primary" %>
-                </div>
-              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-xs-4 text-right space">
+            	<%= f.label :　　有効・無効 %>
+            </div>
+            <div class="col-xs-1">
+            	<%= f.radio_button :is_active, :true , class:"form-control" %>
+            </div>
+            <div class="col-xs-2">
+            	<p class="text_size">有効</p>
+            </div>
+            <div class="col-xs-1">
+            	<%= f.radio_button :is_active, :false , class:"form-control" %>
+            </div>
+             <div class="col-xs-2">
+            	<p class="text_size">無効</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="action col-xs-4 col-xs-offset-4 text-center">
+            	<%= f.submit "編集内容を保存する" , class:"btn btn-primary" %>
             </div>
           </div>
         </div>
@@ -205,5 +229,8 @@
     </div>
   <% end %>
 </div>
+
+
+
 
 

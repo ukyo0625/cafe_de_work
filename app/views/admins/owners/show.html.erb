@@ -13,9 +13,11 @@
 				<tr>
 					<td>名前</td>
 					<td>メールアドレス</td>
+					<td>有効・無効</td>
 				</tr>
 				<td><%= @owner.name %></td>
 				<td><%= @owner.email %></td>
+				<td><%= actived_status(@owner) %>
 			</table>
 		</div>
 	</div>
@@ -36,12 +38,7 @@
 				    <tr>
 					    <td><%= link_to shop.shop_name , admins_shop_path(shop) %>
 					    </td>
-					    <td><% if shop.is_active == true %>
-				          有効
-				          <% else  %>
-				          無効
-				          <% end %>
-				        </td>
+					    <td><%= active_status(shop) %></td>
 				    </tr>
 					<% end %>
 				</tbody>

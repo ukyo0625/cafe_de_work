@@ -12,7 +12,7 @@ class Admins::ShopsController < ApplicationController
 		#登録してる定休日を引っ張ってくる
 		@tags_select = @shop.shop_tags.pluck(:tag_id)
 		#登録してるタグを引っ張ってくる
-		@prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
+		@prefecture_options = Shop::PREFECTURE_OPTIONS
 		#都道府県のセレクトボックスに入れる
 	end
     def update
@@ -37,22 +37,24 @@ class Admins::ShopsController < ApplicationController
 		else
 			@tags = Tag.all
 			@holidays_select = @shop.holidays.pluck(:holiday_number)
-			@tags_select = @shop.shop_tags.pluck(:tag_id)[['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']][['東京都', '01000'],['埼玉県', '02000']]
+			@tags_select = @shop.shop_tags.pluck(:tag_id)
+      @prefecture_options = Shop::PREFECTURE_OPTIONS
 		  render :edit
 		end
 	end
 	def search
     @q = Shop.ransack(params[:q])
     #ransackの検索機能
-    @prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
+    @prefecture_options = Shop::PREFECTURE_OPTIONS
     #都道府県のセレクトボックスに入れる
 	end
 	def index
+    @actived_shops = Shop.owner_actived
 	  param_shop_tag_ids = params[:q][:shop_tags_tag_id_in_any].presence && params[:q][:shop_tags_tag_id_in_any].map(&:to_i)
 		params[:q].delete(:shop_tags_tag_id_in_any)
 		#deleteで検索対象を一旦消す
-	  @q = Shop.search(search_params)
-	  shops = @q.result(distinct: true).where(is_active: true)
+    @q = @actived_shops.search(search_params)
+	  shops = @q.result(distinct: true).active
 	  if param_shop_tag_ids.present?
 	    shop_tags = shops.select do |shop|
 	      target_shop_tag_ids = shop.shop_tags.map(&:tag_id)
@@ -73,8 +75,10 @@ class Admins::ShopsController < ApplicationController
     	:owner_id,
     	:address,
     	:seat,
-    	:open_time,
-    	:close_time,
+    	:open_time_hour,
+      :open_time_minute,
+      :close_time_hour,
+    	:close_time_minute,
     	:phone_number,
     	:shop_image,
     	:is_favorite,

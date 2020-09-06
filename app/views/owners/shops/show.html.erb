@@ -4,7 +4,7 @@
       <h3><%= @shop.shop_name %>の情報</h3>
     </div>
     <div class="col-xs-3 padd text-left">
-        <%= link_to "編集する" , edit_owners_shop_path %>
+      <%= link_to "編集する" , edit_owners_shop_path %>
     </div>
   </div>
   <div class="container-fluid">
@@ -14,20 +14,16 @@
           <tr>
             <th>　有効/無効　</th>
             <td>
-              <% if @shop.is_active == true %>
-                  有効
-              <% else  %>
-                  無効
-              <% end %>
+              <%= active_status(@shop) %>
             </td>
           </tr>
           <tr>
-            <th> イメージ画像<br>
-              <%= attachment_image_tag @shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" %>
+            <th>
+              <%= attachment_image_tag @shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_show_img" %>
             </th>
             <td>
-              <div class="thick">詳細</div><br>
-              <%= @shop.shop_detail %></td>
+              <div class="thick">詳細</div>
+              <%= simple_format(@shop.shop_detail) %></td>
           </tr>
           <tr>
             <th>住所</th>
@@ -47,7 +43,8 @@
           </tr>
           <tr>
             <th>営業時間</th>
-            <td><%= @shop.open_time %>時〜<%= @shop.close_time %>時</td>
+            <td><%= @shop.open_time_hour %>時<%= ('0' +@shop.open_time_minute.to_s).slice(-2,2) %>分〜
+                <%= @shop.close_time_hour %>時<%= @shop.close_time_minute %>分</td>
           </tr>
           <tr>
             <th>定休日</th>
@@ -80,42 +77,21 @@
         </table>
       </div>
       <div class="col-xs-12 col-md-3">
-
-          <div id="map"></div>
-        
+        <div id="map"></div>
       </div>
     </div>
+  </div>
 </div>
+
       <style type="text/css">
 #map {
   height: 400px;
   width: 400px;
   margin: 0 auto;
   max-width: 500px;
-
 }
-
-/*
-#map{
-  width: 80%;
-  margin: 0 auto;
-  max-width: 500px;
-}
-.google-maps {
-width: 100% !important;
-height: 100% !important;
-}
-*/
       </style>
-
-<!-- 地名入力用のinputを追加 -->
-<!-- <input id="address" type="textbox" value="Sydney, NSW"> -->
-<!-- buttonをクリックしたらcodeAddressを実行　-->
 <script>
-/*
-mapを関数の外で定義(codeAddressでも使うため)
-geocoderを用意
-*/
 let map
 let geocoder
 window.onload = function() {
@@ -123,7 +99,6 @@ initMap();
 codeAddress();
 }
 function initMap(){
-  // geocoderを初期化
   geocoder = new google.maps.Geocoder()
   map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 0, lng: 0},
@@ -131,12 +106,9 @@ function initMap(){
   });
 }
 function codeAddress(){
-    // geocodingしたあとmapを移動
     geocoder.geocode( { 'address': '<%= @shop.address %>'}, function(results, status) {
       if (status == 'OK') {
-  // map.setCenterで地図が移動
         map.setCenter(results[0].geometry.location);
-  // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
         var marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location

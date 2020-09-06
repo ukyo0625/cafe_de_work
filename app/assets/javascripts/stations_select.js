@@ -4,7 +4,7 @@ $(function(){
     let stations_element = $(this).closest(".row").find(".js_station_select")
     stations_element.empty()
     // 選択し直した際にセレクトに元々入ってる駅名を削除する
-    stations_element.append("<option>駅名</option>"); 
+    stations_element.append("<option>駅　　名</option>"); 
     // emptyで削除するとセレクトボックスに何も表示されなくなるためinclude_blankの代わりに「駅名」を表示させる
     $.ajax({
       url: "/api/v1/stations?line=" + $(this).val(),

@@ -14,29 +14,19 @@
           <tr>
             <th class="th_show">トップページに表示</th>
             <td class="td_show">
-              <% if @shop.is_favorite == true %>
-                  有効
-              <% else  %>
-                  無効
-              <% end %>
+              <%= favorite_status(@shop) %>
             </td>
           </tr>
           <tr>
             <th>　有効/無効　</th>
-            <td>
-              <% if @shop.is_active == true %>
-                有効
-              <% else  %>
-                無効
-              <% end %>
-            </td>
+            <td><%= active_status(@shop) %></td>
           </tr>
           <tr>
             <th>
               <%= attachment_image_tag @shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_show_img" %>
             </th>
-            <td>
-              <%= @shop.shop_detail %></td>
+            <td><div class="thick">詳細</div>
+              <%= simple_format(@shop.shop_detail) %></td>
           </tr>
           <tr>
             <th>住所</th>
@@ -56,7 +46,8 @@
           </tr>
           <tr>
             <th>営業時間</th>
-            <td><%= @shop.open_time %>時〜<%= @shop.close_time %>時</td>
+            <td><%= @shop.open_time_hour %>時<%= ('0' +@shop.open_time_minute.to_s).slice(-2,2) %>分〜
+                <%= @shop.close_time_hour %>時<%= @shop.close_time_minute %>分</td>
           </tr>
           <tr>
             <th>定休日</th>

@@ -6,43 +6,40 @@
 		</div>
 	</div>
 	<% if @shops.empty? %>
-	    <div class="col-xs-8 col-xs-offset-2 text-center">
-	        <h4>投稿されたカフェはありません</h4>
-	    </div>
+    <div class="col-xs-8 col-xs-offset-2 text-center">
+        <h4>投稿されたカフェはありません</h4>
+    </div>
 	<% else %>
 		<div class="row">
-			<div class="col-xs-10 col-xs-offset-1">
+			<div class="col-xs-12 space">
 				<table class="table">
 					<thead>
-			       		<tr>
-						    <th class="image">イメージ画像</th>
-						    <th class="shop_title">ショップ名/詳細</th>
-						    <th class="on_off">有効・無効</th>
-			    		</tr>
-				  	</thead>
-				  	<tbody>
+	       		<tr>
+					    <th class="image">イメージ画像</th>
+					    <th class="shop_title">ショップ名/詳細</th>
+					    <th class="on_off">有効・無効</th>
+		    		</tr>
+				  </thead>
+				  <tbody>
 						<% if @shops.present? %> 
 							<% @shops.each do |shop| %>
-						 	    <tr>
-						 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
-						            </td>
-						            <td>
-						            	<h4><%= link_to shop.shop_name , owners_shop_path(shop.id)  %>
-						            	</h4>
-						            	<p><%= shop.shop_detail %>
-						            	</p>
-						            </td>
-						            <% if shop.is_active == true %>
-								    <td><h4 class="text-center">有効</h4></td>
-							　　　　 <% elsif shop.is_active == false %>
-								    <td><h4 class="text-center">無効</h4></td>
-							        <% end %>
-						        </tr>
+					 	    <tr>
+					 	    	<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
+					        </td>
+			            <td>
+			            	<h4><%= link_to shop.shop_name , owners_shop_path(shop.id)  %>
+			            	</h4>
+			            	<p><%= simple_format(shop.shop_detail) %></p>
+			            </td>
+			            <td class="text-center" >
+			              <h4><%= active_status(shop) %></h4>
+			            </td>
+					      </tr>
 							<% end %>
 						<% end %>
 					</tbody>
 				</table>
 			</div>
-	    </div>
+	   </div>
 	<% end %>
 </div>

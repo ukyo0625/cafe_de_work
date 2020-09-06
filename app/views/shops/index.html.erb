@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4 col-xs-offset-4 space text-center">
@@ -13,7 +12,7 @@
     </div>
 	<% else %>
 	  <div class="row">
-			<div class="col-xs-10 col-xs-offset-1 space">
+			<div class="col-xs-12 space">
 				<table class="table">
 					<thead>
 						<tr>
@@ -27,8 +26,8 @@
 					    <tr>
 								<td><%= attachment_image_tag shop, :shop_image,:fill,50,50 , format: 'jpeg', fallback: "no_image.jpg" , class:"shop_index_img" %>
 								</td>
-								<td><%= link_to shop.shop_name , shop_path(shop) %><br>
-									 <%= shop.shop_detail %>
+								<td><h4><%= link_to shop.shop_name , shop_path(shop) %></h4>
+									<h6><%= simple_format(shop.shop_detail) %></h6>
 								</td>
 								<td>
 									<% shop.shop_tags.each do |tag| %>

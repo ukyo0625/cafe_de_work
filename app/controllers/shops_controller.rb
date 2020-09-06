@@ -1,22 +1,25 @@
 class ShopsController < ApplicationController
 
 	def top
-		@shops = Shop.all
-		@shop_favorite = @shops.where(is_favorite: true).where(is_active: true)
-		@shop_favorite_odd = @shop_favorite.each_slice(2).map(&:first)
-		@shop_favorite_even = @shop_favorite.each_slice(2).map(&:last)
+		@actived_shops = Shop.owner_actived
+    @shop_favorites = @actived_shops.active.with_favorite
+    #有効なshopからお気に入りに含んでるshopのみ
+    @shop_favorite_odd = @shop_favorites.each_slice(2).map(&:first)
+    @shop_favorite_even = @shop_favorites.each_slice(2).map(&:second).compact
+    #縦2列に表示するためにsliceで分割
 	end
 
 	def search
     @q = Shop.ransack(params[:q])
-    @prefecture_options = [['東京都', '01000'],['埼玉県', '02000'],['神奈川県', '03000'],['千葉県', '04000'],['群馬県', '05000'],['栃木県', '06000'],['茨城県', '07000']]
+    @prefecture_options = Shop::PREFECTURE_OPTIONS
 	end
 
 	def index
+    @actived_shops = Shop.owner_actived
 		param_shop_tag_ids = params[:q][:shop_tags_tag_id_in_any].presence && params[:q][:shop_tags_tag_id_in_any].map(&:to_i)
 		params[:q].delete(:shop_tags_tag_id_in_any)
-	  @q = Shop.search(search_params)
-	  shops = @q.result(distinct: true).where(is_active: true)
+	  @q = @actived_shops.search(search_params)
+	  shops = @q.result(distinct: true).active
 	  if param_shop_tag_ids.present?
       shop_tags = shops.select do |shop|
         target_shop_tag_ids = shop.shop_tags.map(&:tag_id)
